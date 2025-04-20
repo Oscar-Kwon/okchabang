@@ -1,0 +1,255 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Source Sans 3', sans-serif;
+    background-color: #000000;
+    color: #FFFFFF;
+    line-height: 1.5;
+}
+
+/* Navigation */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 17px;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+/* Hero Section */
+.hero {
+    padding: 120px 20px 60px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    letter-spacing: 3.3%;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+}
+
+.signature-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.signature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.item-image {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.signature-item h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    letter-spacing: 5.3%;
+    text-transform: uppercase;
+}
+
+.signature-item p {
+    font-size: 18px;
+    opacity: 0.9;
+    max-width: 280px;
+    text-align: center;
+}
+
+/* Menu Categories */
+.menu-categories {
+    padding: 60px 20px;
+}
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    background: transparent;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    padding: 8px 30px;
+    border-radius: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.category-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer */
+.footer {
+    background-color: #000000;
+    padding: 60px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 40px;
+}
+
+.footer-locations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.location h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    margin-bottom: 10px;
+}
+
+.location p {
+    color: #999999;
+}
+
+.footer-signup {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer-signup h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 39px;
+    letter-spacing: 4.1%;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.signup-form {
+    display: grid;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.signup-input {
+    background: rgba(187, 187, 187, 0.15);
+    border: 1px solid rgba(136, 136, 136, 0.1);
+    border-radius: 30px;
+    padding: 12px 20px;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.signup-input::placeholder {
+    color: #999999;
+}
+
+.signup-btn {
+    background: #000000;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 30px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signup-btn:hover {
+    background-color: #333333;
+}
+
+.copyright {
+    text-align: center;
+    color: #999999;
+    font-size: 14.625px;
+    margin-top: 40px;
+}
+
+.slogan {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.75px;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .signature-item h2 {
+        font-size: 24px;
+    }
+
+    .footer-signup h3 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-locations {
+        grid-template-columns: 1fr;
+    }
+} 
