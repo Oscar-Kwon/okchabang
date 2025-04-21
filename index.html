@@ -47,7 +47,7 @@
             <span class="hamburger"></span>
             <span class="close-icon">×</span>
         </button>
-        
+        <div class="mobile-menu-overlay"></div>
         <div class="nav-container">
             <a href="#" class="nav-link">HOME</a>
             <a href="#" class="nav-link">ABOUT</a>
@@ -253,26 +253,26 @@
     const closeIcon = document.querySelector('.close-icon');
     const body = document.body;
 
+    // 햄버거 메뉴 클릭 시
     menuToggle.addEventListener('click', () => {
         body.classList.toggle('menu-active');
     });
 
+    // X 아이콘 클릭 시
     closeIcon.addEventListener('click', () => {
         body.classList.remove('menu-active');
     });
 
-    // 메뉴 링크 클릭시 메뉴 닫기
+    // 메뉴 링크 클릭 시 메뉴 닫기
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             body.classList.remove('menu-active');
         });
     });
 
-    // 오버레이 클릭시 메뉴 닫기
-    document.querySelector('.nav-container').addEventListener('click', (e) => {
-        if (e.target === e.currentTarget) {
-            body.classList.remove('menu-active');
-        }
+    // 오버레이 클릭 시 메뉴 닫기
+    document.querySelector('.mobile-menu-overlay').addEventListener('click', () => {
+        body.classList.remove('menu-active');
     });
 
     // 스크롤시 메뉴 닫기
