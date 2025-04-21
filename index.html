@@ -24,7 +24,7 @@
 
     <!-- 🐤 Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="옥차방 | 따뜻한 행운을 나누는 복고 감성 티하우스">
+    <meta name="twitter:title" content="옥차방 | 따뜻한 행운을 나누는 복고 감성 아이스크림 브랜드">
     <meta name="twitter:description" content="모든 세대가 함께 추억을 나누는 사랑방, 구슬아이스크림과 따뜻한 티가 있는 옥차방.">
     <meta name="twitter:image" content="https://okchabang.com/og-image.png">
 
@@ -43,19 +43,17 @@
 <body>
     <!-- Navigation -->
     <nav class="main-nav">
-        <button class="menu-toggle" aria-label="Menu">
+        <button class="menu-toggle" aria-label="Toggle menu">
             <span class="hamburger"></span>
+            <span class="close-icon">×</span>
         </button>
         
-        <!-- 모바일 메뉴 오버레이 -->
-        <div class="mobile-menu-overlay">
-            <div class="nav-container">
-                <a href="#" class="nav-link">HOME</a>
-                <a href="#" class="nav-link">ABOUT</a>
-                <a href="#" class="nav-link">MENU</a>
-                <a href="#" class="nav-link">EXPLORE</a>
-                <a href="#" class="nav-link">CONTACT</a>
-            </div>
+        <div class="nav-container">
+            <a href="#" class="nav-link">HOME</a>
+            <a href="#" class="nav-link">ABOUT</a>
+            <a href="#" class="nav-link">MENU</a>
+            <a href="#" class="nav-link">EXPLORE</a>
+            <a href="#" class="nav-link">CONTACT</a>
         </div>
     </nav>
 
@@ -252,12 +250,15 @@
 
     // 모바일 메뉴 제어
     const menuToggle = document.querySelector('.menu-toggle');
+    const closeIcon = document.querySelector('.close-icon');
     const body = document.body;
 
-    // 햄버거 메뉴 토글
     menuToggle.addEventListener('click', () => {
-        console.log('Menu clicked'); // 클릭 이벤트 확인용
         body.classList.toggle('menu-active');
+    });
+
+    closeIcon.addEventListener('click', () => {
+        body.classList.remove('menu-active');
     });
 
     // 메뉴 링크 클릭시 메뉴 닫기
@@ -268,7 +269,7 @@
     });
 
     // 오버레이 클릭시 메뉴 닫기
-    document.querySelector('.mobile-menu-overlay').addEventListener('click', (e) => {
+    document.querySelector('.nav-container').addEventListener('click', (e) => {
         if (e.target === e.currentTarget) {
             body.classList.remove('menu-active');
         }
