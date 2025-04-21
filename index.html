@@ -2,14 +2,53 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silk Tea</title>
+
+    <!-- 🌿 기본 메타 정보 -->
+    <title>옥차방 | 따뜻한 행운을 나누는 복고 감성 티하우스</title>
+    <meta name="description" content="모든 세대가 함께 추억을 나누고, 따뜻한 행운을 만나는 공간 – 복고 감성과 현대적 감각이 조화를 이루는 티&디저트 하우스 '옥차방'입니다.">
+    <meta name="keywords" content="옥차방, 티하우스, 복고 카페, 구슬아이스크림, 행운의 공간, 디저트카페, 부산 티카페, 레트로 카페, 다방 감성, 감성카페">
+    <meta name="author" content="옥차방 Okchabang">
+
+    <!-- 🌐 Open Graph (SNS 공유) -->
+    <meta property="og:title" content="옥차방 | 따뜻한 행운을 나누는 복고 감성 티하우스">
+    <meta property="og:description" content="복고적인 따뜻함과 현대적 감성이 어우러진 티&디저트 카페. 모두가 함께하는 사랑방, 옥차방으로 초대합니다.">
+    <meta property="og:image" content="https://okchabang.com/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://okchabang.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="옥차방 Okchabang">
+
+    <!-- 🐤 Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="옥차방 | 따뜻한 행운을 나누는 복고 감성 티하우스">
+    <meta name="twitter:description" content="모든 세대가 함께 추억을 나누는 사랑방, 구슬아이스크림과 따뜻한 티가 있는 옥차방.">
+    <meta name="twitter:image" content="https://okchabang.com/og-image.png">
+
+    <!-- 📱 모바일 앱, PWA 아이콘 대응 -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- 🎨 브랜딩 웹폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/pretendard.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="main-nav">
+        <!-- 햄버거 메뉴 버튼 -->
+        <button class="menu-toggle" aria-label="Menu">
+            <span class="hamburger"></span>
+        </button>
+        
+        <!-- 메인 네비게이션 컨테이너 -->
         <div class="nav-container">
             <a href="#" class="nav-link">HOME</a>
             <a href="#" class="nav-link">ORDER NOW</a>
@@ -19,6 +58,9 @@
         </div>
     </nav>
 
+    <!-- 모바일 메뉴 오버레이 -->
+    <div class="mobile-menu-overlay"></div>
+
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-slider">
@@ -27,18 +69,19 @@
             <div class="slide" style="background-image: url('hero03.png')"></div>
         </div>
         <div class="hero-content">
-            <img src="logos.png" alt="Silk" class="hero-logo">
+            <img src="logos.png" alt="옥차방" class="hero-logo">
+            <p id="lucky-message" class="lucky-message"></p>
         </div>
     </header>
 
     <!-- Menu Categories -->
     <section class="menu-categories">
         <div class="category-buttons">
-            <button class="category-btn">Original</button>
-            <button class="category-btn">Milky</button>
-            <button class="category-btn">Fruity</button>
-            <button class="category-btn">Cold Brew</button>
-            <button class="category-btn">Cheese Cloud</button>
+            <button class="category-btn">IceCream</button>
+            <button class="category-btn">Coffee</button>
+            <button class="category-btn">Latte</button>
+            <button class="category-btn">Tea</button>
+            <button class="category-btn">Ade</button>
         </div>
     </section>
 
@@ -47,12 +90,12 @@
         <div class="footer-content">
             <div class="footer-locations">
                 <div class="location">
-                    <h3>Hong Kong:</h3>
-                    <p>info@thesilktea.com</p>
+                    <h3>Seoul:</h3>
+                    <p>info@okchabang.com</p>
                 </div>
                 <div class="location">
-                    <h3>Singapore:</h3>
-                    <p>hello.sg@thesilktea.com</p>
+                    <h3>Busan:</h3>
+                    <p>hello.bs@okchabang.com</p>
                 </div>
             </div>
             <div class="footer-signup">
@@ -67,5 +110,125 @@
             <p class="slogan">Perfection in Originality.</p>
         </div>
     </footer>
+
+    <script>
+    // 슬라이드 기능
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function nextSlide() {
+        // 현재 슬라이드를 왼쪽으로 이동
+        slides[currentSlide].style.transform = 'translateX(-100%)';
+        
+        // 다음 슬라이드 준비
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].style.transform = 'translateX(0)';
+        
+        // 나머지 슬라이드 위치 초기화
+        slides.forEach((slide, index) => {
+            if(index !== currentSlide) {
+                slide.style.transform = 'translateX(100%)';
+            }
+        });
+    }
+
+    // 초기 설정
+    slides.forEach((slide, index) => {
+        if(index !== 0) {
+            slide.style.transform = 'translateX(100%)';
+        }
+    });
+
+    // 5초마다 슬라이드 전환
+    setInterval(nextSlide, 5000);
+
+    // 드래그 기능
+    const logo = document.getElementById('draggableLogo');
+    let isDragging = false;
+    let currentX;
+    let currentY;
+    let initialX;
+    let initialY;
+    let xOffset = 0;
+    let yOffset = 0;
+
+    logo.addEventListener('mousedown', dragStart);
+    logo.addEventListener('mousemove', drag);
+    logo.addEventListener('mouseup', dragEnd);
+    logo.addEventListener('mouseleave', dragEnd);
+
+    // 터치 이벤트
+    logo.addEventListener('touchstart', dragStart);
+    logo.addEventListener('touchmove', drag);
+    logo.addEventListener('touchend', dragEnd);
+
+    function dragStart(e) {
+        if (e.type === 'touchstart') {
+            initialX = e.touches[0].clientX - xOffset;
+            initialY = e.touches[0].clientY - yOffset;
+        } else {
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+        }
+
+        if (e.target === logo) {
+            isDragging = true;
+        }
+    }
+
+    function drag(e) {
+        if (isDragging) {
+            e.preventDefault();
+
+            if (e.type === 'touchmove') {
+                currentX = e.touches[0].clientX - initialX;
+                currentY = e.touches[0].clientY - initialY;
+            } else {
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+            }
+
+            xOffset = currentX;
+            yOffset = currentY;
+
+            // 드래그 시 로고 회전 효과 추가
+            const rotation = currentX * 0.1; // 드래그 거리에 따라 회전
+            setTranslate(currentX, currentY, logo, rotation);
+        }
+    }
+
+    function setTranslate(xPos, yPos, el, rotation) {
+        el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0) rotate(${rotation}deg)`;
+    }
+
+    function dragEnd() {
+        if (isDragging) {
+            // 원래 위치로 부드럽게 돌아가기
+            logo.style.transition = 'transform 0.5s ease-out';
+            logo.style.transform = 'translate3d(0px, 0px, 0) rotate(0deg)';
+            
+            setTimeout(() => {
+                logo.style.transition = 'none';
+            }, 500);
+
+            initialX = currentX;
+            initialY = currentY;
+
+            isDragging = false;
+        }
+    }
+
+    // 행운 메시지 랜덤 텍스트
+    const luckyMessages = [
+        "오늘은 복을 나눌 시간이에요 🌿",
+        "티 향처럼 퍼지는 행운이 곧 찾아올 거예요 🍵",
+        "당신을 위한 따뜻한 순간, 옥차방에서 시작돼요 ☕️"
+    ];
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const el = document.querySelector("#lucky-message");
+        if (el) el.textContent = luckyMessages[Math.floor(Math.random() * luckyMessages.length)];
+    });
+    </script>
 </body>
 </html>
