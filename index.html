@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 🌿 기본 메타 정보 -->
-    <title>옥차방 | 따뜻한 행운을 나누는 복고 감성 티하우스</title>
+    <title>옥차방 | 따뜻한 행운을 나누는 복고 감성 아이스크림 브랜드</title>
     <meta name="description" content="모든 세대가 함께 추억을 나누고, 따뜻한 행운을 만나는 공간 – 복고 감성과 현대적 감각이 조화를 이루는 티&디저트 하우스 '옥차방'입니다.">
     <meta name="keywords" content="옥차방, 티하우스, 복고 카페, 구슬아이스크림, 행운의 공간, 디저트카페, 부산 티카페, 레트로 카페, 다방 감성, 감성카페">
     <meta name="author" content="옥차방 Okchabang">
 
     <!-- 🌐 Open Graph (SNS 공유) -->
-    <meta property="og:title" content="옥차방 | 따뜻한 행운을 나누는 복고 감성 티하우스">
+    <meta property="og:title" content="옥차방 | 따뜻한 행운을 나누는 복고 감성 구슬 아이스크림 브랜드">
     <meta property="og:description" content="복고적인 따뜻함과 현대적 감성이 어우러진 티&디저트 카페. 모두가 함께하는 사랑방, 옥차방으로 초대합니다.">
-    <meta property="og:image" content="https://okchabang.com/og-image.png">
+    <meta property="og:image" content="og-img.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -43,23 +43,21 @@
 <body>
     <!-- Navigation -->
     <nav class="main-nav">
-        <!-- 햄버거 메뉴 버튼 -->
         <button class="menu-toggle" aria-label="Menu">
             <span class="hamburger"></span>
         </button>
         
-        <!-- 메인 네비게이션 컨테이너 -->
-        <div class="nav-container">
-            <a href="#" class="nav-link">HOME</a>
-            <a href="#" class="nav-link">ORDER NOW</a>
-            <a href="#" class="nav-link">MENU</a>
-            <a href="#" class="nav-link">EXPLORE</a>
-            <a href="#" class="nav-link">CONTACT US</a>
+        <!-- 모바일 메뉴 오버레이 -->
+        <div class="mobile-menu-overlay">
+            <div class="nav-container">
+                <a href="#" class="nav-link">HOME</a>
+                <a href="#" class="nav-link">ABOUT</a>
+                <a href="#" class="nav-link">MENU</a>
+                <a href="#" class="nav-link">EXPLORE</a>
+                <a href="#" class="nav-link">CONTACT</a>
+            </div>
         </div>
     </nav>
-
-    <!-- 모바일 메뉴 오버레이 -->
-    <div class="mobile-menu-overlay"></div>
 
     <!-- Hero Section -->
     <header class="hero">
@@ -112,35 +110,57 @@
     </footer>
 
     <script>
-    // 슬라이드 기능
+    // 슬라이드 기능 수정
+    const slider = document.querySelector('.hero-slider');
     const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
 
-    function nextSlide() {
-        // 현재 슬라이드를 왼쪽으로 이동
-        slides[currentSlide].style.transform = 'translateX(-100%)';
+    // 초기 설정
+    function initSlider() {
+        // 첫 번째 슬라이드를 복제하여 마지막에 추가
+        const firstSlideClone = slides[0].cloneNode(true);
+        slider.appendChild(firstSlideClone);
         
-        // 다음 슬라이드 준비
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].style.transform = 'translateX(0)';
-        
-        // 나머지 슬라이드 위치 초기화
-        slides.forEach((slide, index) => {
-            if(index !== currentSlide) {
-                slide.style.transform = 'translateX(100%)';
-            }
+        // 모든 슬라이드를 나란히 배치
+        const allSlides = slider.querySelectorAll('.slide');
+        allSlides.forEach((slide, index) => {
+            slide.style.transform = `translateX(${index * 100}%)`;
         });
     }
 
-    // 초기 설정
-    slides.forEach((slide, index) => {
-        if(index !== 0) {
-            slide.style.transform = 'translateX(100%)';
-        }
-    });
+    // 슬라이드 전환
+    function moveSlide() {
+        const allSlides = slider.querySelectorAll('.slide');
+        currentSlide++;
+        
+        // 모든 슬라이드를 왼쪽으로 이동
+        allSlides.forEach(slide => {
+            slide.style.transform = `translateX(${-currentSlide * 100}%)`;
+        });
 
-    // 5초마다 슬라이드 전환
-    setInterval(nextSlide, 5000);
+        // 마지막 슬라이드 이후 처리
+        if (currentSlide >= slides.length) {
+            setTimeout(() => {
+                // 트랜지션 제거
+                allSlides.forEach(slide => {
+                    slide.style.transition = 'none';
+                    slide.style.transform = `translateX(0)`;
+                });
+                currentSlide = 0;
+                
+                // 트랜지션 재설정
+                setTimeout(() => {
+                    allSlides.forEach(slide => {
+                        slide.style.transition = 'transform 1s ease-out';
+                    });
+                }, 50);
+            }, 1000); // 트랜지션이 완료된 후 실행
+        }
+    }
+
+    // 초기화 및 자동 슬라이드 시작
+    initSlider();
+    setInterval(moveSlide, 5000); // 5초마다 슬라이드 전환
 
     // 드래그 기능
     const logo = document.getElementById('draggableLogo');
@@ -228,6 +248,40 @@
     window.addEventListener("DOMContentLoaded", () => {
         const el = document.querySelector("#lucky-message");
         if (el) el.textContent = luckyMessages[Math.floor(Math.random() * luckyMessages.length)];
+    });
+
+    // 모바일 메뉴 제어
+    const menuToggle = document.querySelector('.menu-toggle');
+    const body = document.body;
+
+    // 햄버거 메뉴 토글
+    menuToggle.addEventListener('click', () => {
+        console.log('Menu clicked'); // 클릭 이벤트 확인용
+        body.classList.toggle('menu-active');
+    });
+
+    // 메뉴 링크 클릭시 메뉴 닫기
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            body.classList.remove('menu-active');
+        });
+    });
+
+    // 오버레이 클릭시 메뉴 닫기
+    document.querySelector('.mobile-menu-overlay').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) {
+            body.classList.remove('menu-active');
+        }
+    });
+
+    // 스크롤시 메뉴 닫기
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (Math.abs(currentScroll - lastScroll) > 50) {
+            body.classList.remove('menu-active');
+            lastScroll = currentScroll;
+        }
     });
     </script>
 </body>
