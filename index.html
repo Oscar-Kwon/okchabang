@@ -39,16 +39,25 @@
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/pretendard.css" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
+    <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID_HERE"></script>
+
+    <!-- GA4 연결 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXX'); // 여기에 본인의 GA4 ID 넣기
+    </script>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="main-nav">
-        <!-- 웹 버전 네비게이션 -->
         <div class="nav-container">
             <a href="#" class="nav-link">HOME</a>
             <a href="#story-section" class="nav-link">ABOUT</a>
             <a href="#featured-menu" class="nav-link">MENU</a>
-            <a href="#" class="nav-link">EXPLORE</a>
+            <a href="#explore" class="nav-link">EXPLORE</a>
             <a href="#franchise" class="nav-link">CONTACT</a>
         </div>
 
@@ -61,7 +70,7 @@
             <a href="#" class="mobile-nav-link">HOME</a>
             <a href="#story-section" class="mobile-nav-link">ABOUT</a>
             <a href="#featured-menu" class="mobile-nav-link">MENU</a>
-            <a href="#" class="mobile-nav-link">EXPLORE</a>
+            <a href="#explore" class="mobile-nav-link">EXPLORE</a>
             <a href="#franchise" class="mobile-nav-link">CONTACT</a>
         </div>
     </nav>
@@ -83,9 +92,9 @@
     <section class="story-section" id="story-section">
         <div class="story-container">
             <div class="story-text">
-                <h2 class="story-title">THE OKCHABANG. STORY</h2>
+                <h2 class="story-title">THE OKCHABANG STORY</h2>
                 <p class="story-subtitle">INSPIRING THE WORLD TO SEEK<br>PERFECTION IN ORIGINALITY.</p>
-                <a href="#" class="learn-more-btn">LEARN MORE</a>
+                <a href="#" class="learn-more-btn">브랜드 소개</a>
             </div>
             <div class="story-image">
                 <div class="image-stack">
@@ -109,6 +118,48 @@
         </div>
 
         <div class="menu-grid">
+            <!-- IceCream 메뉴 -->
+            <div class="menu-item active" data-category="icecream">
+                <img src="menu/Strawberry%20Plain-icecream.png" alt="딸기 플레인">
+                <h3>딸기 플레인</h3>
+                <p>Strawberry Plain</p>
+            </div>
+            <div class="menu-item active" data-category="icecream">
+                <img src="menu/Blue%20Bubble-icecream.png" alt="블루 버블">
+                <h3>블루 버블</h3>
+                <p>Blue Bubble</p>
+            </div>
+            <div class="menu-item active" data-category="icecream">
+                <img src="menu/Cotton%20Candy-icecream.png" alt="솜사탕">
+                <h3>솜사탕</h3>
+                <p>Cotton Candy</p>
+            </div>
+            <div class="menu-item active" data-category="icecream">
+                <img src="menu/Double%20Chocolate-icecream.png" alt="더블 초콜릿">
+                <h3>더블 초콜릿</h3>
+                <p>Double Chocolate</p>
+            </div>
+            <div class="menu-item active" data-category="icecream">
+                <img src="menu/Lemon%20Lime-icecream.png" alt="레몬 라임">
+                <h3>레몬 라임</h3>
+                <p>Lemon Lime</p>
+            </div>
+            <div class="menu-item active" data-category="icecream">
+                <img src="menu/Lotuva-icecream.png" alt="로투바">
+                <h3>로투바</h3>
+                <p>Lotuva</p>
+            </div>
+            <div class="menu-item active" data-category="icecream">
+                <img src="menu/Rainbow-icecream.png" alt="레인보우">
+                <h3>레인보우</h3>
+                <p>Rainbow</p>
+            </div>
+            <div class="menu-item active" data-category="icecream">
+                <img src="menu/Banana%20Split-icecream.png" alt="바나나 스플릿">
+                <h3>바나나 스플릿</h3>
+                <p>Banana Split</p>
+            </div>
+
             <!-- Coffee 메뉴 -->
             <div class="menu-item" data-category="coffee">
                 <img src="menu/menu-americano.png" alt="아메리카노">
@@ -172,6 +223,35 @@
         </div>
     </section>
 
+    <!-- EXPLORE 섹션 -->
+    <section id="explore" class="explore-section">
+        <div class="explore-container">
+            <div class="explore-text">
+                <h2 class="section-title">EXPLORE</h2>
+                <p class="explore-description">
+                    옥차방의 특별한 공간을 만나보세요. 부산 롯데백화점 중구점을 시작으로, 서울 신사동의 새로운 팝업 스토어까지, 각지에서 여러분을 기다리고 있습니다.
+                </p>
+                <div class="store-list">
+                    <div class="store-item">
+                        <h3>옥차방 부산점</h3>
+                        <p>부산 중구 롯데백화점 중구점 (Coming Soon)</p>
+                    </div>
+                    <div class="store-item">
+                        <h3>옥차방 신사점</h3>
+                        <p>서울 강남구 신사동 (Coming Soon)</p>
+                    </div>
+                    <div class="store-item">
+                        <h3>부산항 팝업</h3>
+                        <p>6월 3일 진행 예정</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오른쪽 컬럼: 네이버 지도 -->
+            <div id="map" class="map-container"></div>
+        </div>
+    </section>
+
     <!-- ✨ 프랜차이즈 CTA 추가 -->
     <section class="franchise-cta" id="franchise">
         <div class="franchise-container">
@@ -186,17 +266,49 @@
         </div>
     </section>
 
-    <!-- 이메일 정보 섹션 -->
-    <section class="footer-signup">
-        <h3>CONTACT US</h3>
-        <div class="email-info">
-            <div class="location">
-                <h4>Seoul</h4>
-                <p>info@okchabang.com</p>
+    <!-- 브로셔 섹션 추가 -->
+    <section class="brochure-section">
+        <div class="cta-brochure">
+            <h3>BRAND BROCHURE</h3>
+            <iframe 
+                src="/brochure/okchabang-brochure.pdf#toolbar=0" 
+                width="100%" 
+                height="500px" 
+                style="border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px;"
+                class="brochure-frame"
+            ></iframe>
+            <a id="download-brochure" 
+               href="/brochure/okchabang-brochure.pdf" 
+               download 
+               class="cta-button">
+                📥 브로셔 다운로드
+            </a>
+        </div>
+    </section>
+
+    <!-- CONTACT US 섹션 -->
+    <section class="contact-section">
+        <h2 class="section-title">CONTACT US</h2>
+        <div class="contact-content">
+            <!-- 이메일 정보 -->
+            <div class="email-info">
+                <div class="location">
+                    <h4>Seoul</h4>
+                    <p>info@okchabang.com</p>
+                </div>
+                <div class="location">
+                    <h4>Busan</h4>
+                    <p>hello.bs@okchabang.com</p>
+                </div>
             </div>
-            <div class="location">
-                <h4>Busan</h4>
-                <p>hello.bs@okchabang.com</p>
+
+            <!-- 협업 및 제휴문의 폼 -->
+            <div class="contact-form">
+                <form class="signup-form">
+                    <input type="text" placeholder="Your Name" class="signup-input">
+                    <input type="email" placeholder="Your Email" class="signup-input">
+                    <button type="submit" class="signup-btn">제휴 문의하기</button>
+                </form>
             </div>
         </div>
     </section>
@@ -204,14 +316,6 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-signup" id="contact-form">
-                <h3>협업 및 제휴문의</h3>
-                <form class="signup-form">
-                    <input type="text" placeholder="Your Name" class="signup-input">
-                    <input type="email" placeholder="Your Email" class="signup-input">
-                    <button type="submit" class="signup-btn">제출하기</button>
-                </form>
-            </div>
             <p class="copyright">© 2025 okchabang. All Rights Reserved.</p>
             <p class="slogan">Perfection in Originality.</p>
         </div>
@@ -511,6 +615,61 @@
           wrapper.style.transform = wrapper.style.transform.replace(' scale(1.05)', '');
         });
       });
+    });
+
+    // 네이버 지도 초기화
+    function initMap() {
+        var mapOptions = {
+            center: new naver.maps.LatLng(35.0987, 129.0403), // 부산 중구 롯데백화점 기준
+            zoom: 15
+        };
+
+        var map = new naver.maps.Map('map', mapOptions);
+
+        var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(35.0987, 129.0403),
+            map: map,
+            title: '옥차방 부산점'
+        });
+    }
+
+    // 페이지 로드 시 지도 초기화
+    window.addEventListener('load', initMap);
+
+    // 이벤트 트래킹 스크립트
+    document.addEventListener("DOMContentLoaded", function () {
+        // 창업문의 버튼
+        const franchiseBtn = document.querySelector('.cta-button[href*="tally"]');
+        if (franchiseBtn) {
+            franchiseBtn.addEventListener('click', function () {
+                gtag('event', 'click_franchise_cta', {
+                    event_category: 'CTA',
+                    event_label: 'Franchise Inquiry'
+                });
+            });
+        }
+
+        // 제휴문의 버튼
+        const contactBtn = document.querySelector('.signup-btn');
+        if (contactBtn) {
+            contactBtn.addEventListener('click', function () {
+                gtag('event', 'click_contact_cta', {
+                    event_category: 'CTA',
+                    event_label: 'Partner Inquiry'
+                });
+            });
+        }
+
+        // 브로셔 다운로드
+        const brochureBtn = document.querySelector('#download-brochure');
+        if (brochureBtn) {
+            brochureBtn.addEventListener('click', function () {
+                gtag('event', 'click_brochure_download', {
+                    event_category: 'CTA',
+                    event_label: 'Download Brochure'
+                });
+            });
+        }
     });
     </script>
 </body>
