@@ -140,48 +140,39 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMenuItems(category);
   });
 
-  // 메뉴 카테고리 전환 기능
-  document.addEventListener('DOMContentLoaded', function() {
-    // 초기 상태에서 coffee 카테고리 활성화
-    const coffeeButton = document.querySelector('[data-category="coffee"]');
-    if (coffeeButton) {
-        coffeeButton.classList.add('active');
-        showCategory('coffee');
-    }
+  // 메뉴 카테고리 전환 함수
+  function toggleMenuCategory(category) {
+    // 모든 버튼의 active 클래스 제거
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    
+    // 선택된 카테고리 버튼에 active 클래스 추가
+    document.querySelector(`.category-btn[data-category="${category}"]`).classList.add('active');
+    
+    // 모든 메뉴 아이템 숨기기
+    document.querySelectorAll('.menu-item').forEach(item => {
+      item.style.display = 'none';
+      item.classList.remove('active');
+    });
+    
+    // 선택된 카테고리의 메뉴 아이템만 보이기
+    document.querySelectorAll(`.menu-item[data-category="${category}"]`).forEach(item => {
+      item.style.display = 'flex';
+      item.classList.add('active');
+    });
+  }
 
-    // 카테고리 버튼 클릭 이벤트
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // 모든 버튼에서 active 클래스 제거
-            categoryButtons.forEach(btn => btn.classList.remove('active'));
-            // 클릭된 버튼에 active 클래스 추가
-            this.classList.add('active');
+  // 초기 카테고리 설정
+  toggleMenuCategory('icecream');
 
-            // 해당 카테고리 메뉴 표시
-            const category = this.getAttribute('data-category');
-            showCategory(category);
-        });
+  // 카테고리 버튼 클릭 이벤트 리스너
+  document.querySelectorAll('.category-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const category = this.getAttribute('data-category');
+      toggleMenuCategory(category);
     });
   });
-
-  // 카테고리별 메뉴 표시 함수
-  function showCategory(category) {
-    // 모든 메뉴 아이템 숨기기
-    const allMenuItems = document.querySelectorAll('.menu-item');
-    allMenuItems.forEach(item => {
-        item.classList.remove('active');
-    });
-
-    // 선택된 카테고리의 메뉴 아이템만 표시
-    const selectedItems = document.querySelectorAll(`.menu-item[data-category="${category}"]`);
-    selectedItems.forEach(item => {
-        item.classList.add('active');
-    });
-
-    console.log(`Showing category: ${category}`); // 디버깅용 로그
-    console.log(`Found ${selectedItems.length} items`); // 디버깅용 로그
-  }
 
   // 햄버거 메뉴 관련 요소들
   const menuToggle = document.querySelector('.menu-toggle');
@@ -215,4 +206,23 @@ document.addEventListener('DOMContentLoaded', () => {
       lastScroll = currentScroll;
     }
   });
+
+  // 네이버 지도 초기화
+  function initMap() {
+    var mapOptions = {
+      center: new naver.maps.LatLng(35.0987, 129.0403), // 부산 중구 롯데백화점 기준
+      zoom: 15
+    };
+
+    var map = new naver.maps.Map('map', mapOptions);
+
+    var marker = new naver.maps.Marker({
+      position: new naver.maps.LatLng(35.0987, 129.0403),
+      map: map,
+      title: '옥차방 부산점'
+    });
+  }
+
+  // 페이지 로드 시 지도 초기화
+  window.addEventListener('load', initMap);
 });
