@@ -1978,3 +1978,42 @@ html {
     }
 }
 
+/* Sticky Inquiry Button 스타일 */
+.sticky-inquiry {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+}
+
+.sticky-inquiry-btn {
+    display: inline-block;
+    padding: 16px 32px;
+    background: #FFFFFF;
+    color: #000000;
+    border-radius: 100px;
+    font-family: var(--font-quicksand);
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.sticky-inquiry-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* 모바일 반응형 스타일 */
+@media (max-width: 768px) {
+    .sticky-inquiry {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .sticky-inquiry-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+

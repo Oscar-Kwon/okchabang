@@ -40,25 +40,17 @@
     
     <link rel="stylesheet" href="styles.css">
     <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID_HERE"></script>
-
-    <!-- GA4 연결 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXX'); // 여기에 본인의 GA4 ID 넣기
-    </script>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="main-nav">
+        <!-- 웹 버전 네비게이션 -->
         <div class="nav-container">
-            <a href="#" class="nav-link">HOME</a>
+            <a href="#home" class="nav-link">HOME</a>
             <a href="#story-section" class="nav-link">ABOUT</a>
             <a href="#featured-menu" class="nav-link">MENU</a>
             <a href="#explore" class="nav-link">EXPLORE</a>
-            <a href="#franchise" class="nav-link">CONTACT</a>
+            <a href="#contact" class="nav-link">CONTACT</a>
         </div>
 
         <!-- 모바일 버전 -->
@@ -67,11 +59,11 @@
         </button>
         <div class="mobile-menu-overlay"></div>
         <div class="mobile-nav-container">
-            <a href="#" class="mobile-nav-link">HOME</a>
+            <a href="#home" class="mobile-nav-link">HOME</a>
             <a href="#story-section" class="mobile-nav-link">ABOUT</a>
             <a href="#featured-menu" class="mobile-nav-link">MENU</a>
             <a href="#explore" class="mobile-nav-link">EXPLORE</a>
-            <a href="#franchise" class="mobile-nav-link">CONTACT</a>
+            <a href="#contact" class="mobile-nav-link">CONTACT</a>
         </div>
     </nav>
 
@@ -226,6 +218,7 @@
     <!-- EXPLORE 섹션 -->
     <section id="explore" class="explore-section">
         <div class="explore-container">
+            <!-- 왼쪽 컬럼: 텍스트 -->
             <div class="explore-text">
                 <h2 class="section-title">EXPLORE</h2>
                 <p class="explore-description">
@@ -266,51 +259,29 @@
         </div>
     </section>
 
-    <!-- 브로셔 섹션 추가 -->
-    <section class="brochure-section">
-        <div class="cta-brochure">
-            <h3>BRAND BROCHURE</h3>
-            <iframe 
-                src="/brochure/okchabang-brochure.pdf#toolbar=0" 
-                width="100%" 
-                height="500px" 
-                style="border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px;"
-                class="brochure-frame"
-            ></iframe>
-            <a id="download-brochure" 
-               href="/brochure/okchabang-brochure.pdf" 
-               download 
-               class="cta-button">
-                📥 브로셔 다운로드
-            </a>
-        </div>
-    </section>
-
     <!-- CONTACT US 섹션 -->
     <section class="contact-section">
         <h2 class="section-title">CONTACT US</h2>
-        <div class="contact-content">
-            <!-- 이메일 정보 -->
-            <div class="email-info">
-                <div class="location">
-                    <h4>Seoul</h4>
-                    <p>info@okchabang.com</p>
-                </div>
-                <div class="location">
-                    <h4>Busan</h4>
-                    <p>hello.bs@okchabang.com</p>
-                </div>
+        <div class="email-info">
+            <div class="location">
+                <h4>Seoul</h4>
+                <p>info@okchabang.com</p>
             </div>
-
-            <!-- 협업 및 제휴문의 폼 -->
-            <div class="contact-form">
-                <form class="signup-form">
-                    <input type="text" placeholder="Your Name" class="signup-input">
-                    <input type="email" placeholder="Your Email" class="signup-input">
-                    <button type="submit" class="signup-btn">제휴 문의하기</button>
-                </form>
+            <div class="location">
+                <h4>Busan</h4>
+                <p>hello.bs@okchabang.com</p>
             </div>
         </div>
+    </section>
+
+    <!-- 협업 및 제휴문의 섹션 -->
+    <section class="footer-signup" id="contact-form">
+        <h3>협업 및 제휴문의</h3>
+        <form class="signup-form">
+            <input type="text" placeholder="Your Name" class="signup-input">
+            <input type="email" placeholder="Your Email" class="signup-input">
+            <button type="submit" class="signup-btn">제출하기</button>
+        </form>
     </section>
 
     <!-- Footer -->
@@ -320,13 +291,6 @@
             <p class="slogan">Perfection in Originality.</p>
         </div>
     </footer>
-
-    <!-- Sticky Inquiry Button -->
-    <div class="sticky-inquiry">
-        <a href="#franchise" class="sticky-inquiry-btn">
-            창업 문의하기
-        </a>
-    </div>
 
     <script>
     // 슬라이드 기능
@@ -642,42 +606,6 @@
 
     // 페이지 로드 시 지도 초기화
     window.addEventListener('load', initMap);
-
-    // 이벤트 트래킹 스크립트
-    document.addEventListener("DOMContentLoaded", function () {
-        // 창업문의 버튼
-        const franchiseBtn = document.querySelector('.cta-button[href*="tally"]');
-        if (franchiseBtn) {
-            franchiseBtn.addEventListener('click', function () {
-                gtag('event', 'click_franchise_cta', {
-                    event_category: 'CTA',
-                    event_label: 'Franchise Inquiry'
-                });
-            });
-        }
-
-        // 제휴문의 버튼
-        const contactBtn = document.querySelector('.signup-btn');
-        if (contactBtn) {
-            contactBtn.addEventListener('click', function () {
-                gtag('event', 'click_contact_cta', {
-                    event_category: 'CTA',
-                    event_label: 'Partner Inquiry'
-                });
-            });
-        }
-
-        // 브로셔 다운로드
-        const brochureBtn = document.querySelector('#download-brochure');
-        if (brochureBtn) {
-            brochureBtn.addEventListener('click', function () {
-                gtag('event', 'click_brochure_download', {
-                    event_category: 'CTA',
-                    event_label: 'Download Brochure'
-                });
-            });
-        }
-    });
     </script>
 </body>
 </html>
