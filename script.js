@@ -140,39 +140,37 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMenuItems(category);
   });
 
-  // 메뉴 카테고리 전환 함수
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  const menuItems = document.querySelectorAll('.menu-item');
+
   function toggleMenuCategory(category) {
-    // 모든 버튼의 active 클래스 제거
-    document.querySelectorAll('.category-btn').forEach(btn => {
-      btn.classList.remove('active');
-    });
-    
-    // 선택된 카테고리 버튼에 active 클래스 추가
-    document.querySelector(`.category-btn[data-category="${category}"]`).classList.add('active');
-    
-    // 모든 메뉴 아이템 숨기기
-    document.querySelectorAll('.menu-item').forEach(item => {
-      item.style.display = 'none';
-      item.classList.remove('active');
-    });
-    
-    // 선택된 카테고리의 메뉴 아이템만 보이기
-    document.querySelectorAll(`.menu-item[data-category="${category}"]`).forEach(item => {
-      item.style.display = 'flex';
-      item.classList.add('active');
+    // 모든 버튼 비활성화
+    categoryButtons.forEach(btn => btn.classList.remove('active'));
+
+    // 선택된 버튼 활성화
+    const activeBtn = document.querySelector(`.category-btn[data-category="${category}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+
+    // 메뉴 아이템 필터링
+    menuItems.forEach(item => {
+      if (item.dataset.category === category) {
+        item.style.display = 'flex'; // flex로 표시하여 내부 요소들 중앙 정렬
+      } else {
+        item.style.display = 'none';
+      }
     });
   }
 
-  // 초기 카테고리 설정
-  toggleMenuCategory('icecream');
-
-  // 카테고리 버튼 클릭 이벤트 리스너
-  document.querySelectorAll('.category-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const category = this.getAttribute('data-category');
-      toggleMenuCategory(category);
+  // 카테고리 버튼 클릭 이벤트
+  categoryButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedCategory = btn.dataset.category;
+      toggleMenuCategory(selectedCategory);
     });
   });
+
+  // 초기 카테고리 설정
+  toggleMenuCategory('icecream');
 
   // 햄버거 메뉴 관련 요소들
   const menuToggle = document.querySelector('.menu-toggle');
