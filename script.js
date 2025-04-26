@@ -1,27 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // preloader 관련 코드 수정
-  function hidePreloader() {
-    const preloader = document.getElementById('preloader');
-    const body = document.body;
-    
-    // 1.3초 동안 preloader 유지
-    setTimeout(() => {
-      if (preloader && body) {
-        body.classList.remove('loading');
-        body.classList.add('loaded');
-        
-        // 트랜지션 애니메이션을 위한 추가 시간
-        setTimeout(() => {
-          preloader.style.display = 'none';
-        }, 800); // CSS 트랜지션 시간
-      }
-    }, 1300); // 1.3초 지연
+  const preloader = document.getElementById('preloader');
+  const mainContent = document.getElementById('main-content');
+  
+  // 프리로더 초기화
+  function initPreloader() {
+    document.body.classList.add('loading');
+    mainContent.style.visibility = 'hidden';
   }
 
-  // 페이지 로드 완료 시 타이머 시작
+  // 프리로더 숨기기
+  function hidePreloader() {
+    const logo = preloader.querySelector('img');
+    
+    // 로고 exit 애니메이션 추가
+    logo.style.animation = 'logoExit 0.6s cubic-bezier(0.7, 0, 0.3, 1) forwards';
+
+    // 프리로더 제거
+    setTimeout(() => {
+      document.body.classList.remove('loading');
+      document.body.classList.add('loaded');
+      mainContent.style.visibility = 'visible';
+        
+      // 프리로더 완전히 제거 (위로 슬라이드 애니메이션 완료 후)
+        setTimeout(() => {
+          preloader.style.display = 'none';
+      }, 800); // 슬라이드 애니메이션 시간과 동일하게 설정
+    }, 1300); // 로고 애니메이션 시간
+  }
+
+  // 페이지 로드 완료 확인
   if (document.readyState === 'complete') {
     hidePreloader();
   } else {
+    initPreloader();
     window.addEventListener('load', hidePreloader);
   }
 
@@ -270,4 +281,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5초마다 슬라이드 이동
   setInterval(moveSlide, 5000);
+
+  // 스크롤 시 현재 섹션에 해당하는 메뉴 활성화
+  window.addEventListener('scroll', () => {
+    const sections = {
+        home: { id: '', offset: 0 },
+        story: { id: 'story-section', offset: 100 },
+        menu: { id: 'featured-menu', offset: 100 },
+        explore: { id: 'explore', offset: 100 },
+        franchise: { id: 'franchise', offset: 100 }
+    };
+
+    const scrollPosition = window.scrollY + 100;
+    let currentSection = 'home';
+
+    // home 섹션 체크
+    if (scrollPosition < window.innerHeight) {
+        currentSection = 'home';
+    } else {
+        // 다른 섹션들 체크
+        Object.entries(sections).forEach(([sectionName, { id, offset }]) => {
+            if (!id) return; // home 섹션 스킵
+            
+            const element = document.getElementById(id);
+            if (!element) return;
+
+            const rect = element.getBoundingClientRect();
+            const sectionTop = window.scrollY + rect.top;
+            const sectionBottom = sectionTop + rect.height;
+
+            if (scrollPosition >= sectionTop - offset && scrollPosition < sectionBottom) {
+                currentSection = sectionName;
+            }
+        });
+    }
+
+    // 네비게이션 링크 업데이트
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const sectionName = link.getAttribute('data-section');
+        link.classList.toggle('active', sectionName === currentSection);
+    });
+  });
 });

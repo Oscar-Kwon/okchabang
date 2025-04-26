@@ -142,7 +142,7 @@ main, section, header, footer {
 
 .featured-menu {
   background: none;  /* var(--color-background-white) 제거 */
-  margin-top: 0; /* 기존 마진 제거 */
+  margin-top: 100; /* 기존 마진 제거 */
 }
 
 .franchise-cta {
@@ -184,34 +184,41 @@ main, section, header, footer {
 
 /* 메뉴 섹션 스타일 */
 .featured-menu {
-    padding: 180px 0; /* 상하 여백 동일하게 */
-    margin-top: 0; /* 기존 마진 제거 */
+    position: relative;
+    z-index: 3;
+    padding: 240px 0;
+    margin-top: 60px;
+    clear: both;
 }
 
 /* 메뉴 그리드 스타일 */
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* 자동 반응형 그리드 */
-    gap: 20px;
-    padding: 0 16px;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
+    gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* 메뉴 아이템 스타일 */
 .menu-item {
-    display: none; /* 기본적으로 모든 아이템 숨김 */
-    flex-direction: column;
-    align-items: center;
+    display: none; /* Hidden by default */
     text-align: center;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center center;
+}
+
+.menu-item.active {
+    display: block;
 }
 
 .menu-item img {
     width: 100%;
-    aspect-ratio: 1 / 1; /* 이미지 비율 1:1로 고정 */
+    aspect-ratio: 1 / 1; /* Keep images square */
     object-fit: cover;
-    border-radius: 16px;
-    margin-bottom: 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
 
 .menu-item h3 {
@@ -225,6 +232,10 @@ main, section, header, footer {
     margin: 4px 0 0 0;
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.8); /* 설명 텍스트는 약간 투명하게 */
+}
+
+.menu-item:hover {
+  transform: scale(1.03);
 }
 
 /* 카테고리 버튼 스타일 */
@@ -263,7 +274,7 @@ main, section, header, footer {
 /* 모바일 대응 */
 @media (max-width: 768px) {
     .menu-grid {
-        grid-template-columns: repeat(2, 1fr); /* 모바일에서 2컬럼 강제 적용 */
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
         gap: 16px;
     }
 
@@ -281,7 +292,7 @@ main, section, header, footer {
 /* 작은 모바일 화면 */
 @media (max-width: 480px) {
     .menu-grid {
-        gap: 12px;
+        gap: 16px;
         padding: 0 12px;
     }
 }
@@ -295,12 +306,13 @@ main, section, header, footer {
   justify-content: center;
 }
 
-.image-stack {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  height: 500px;
-  margin: 0 auto;
+.story-section .image-stack {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 500px;
+    margin: 0 auto;
+    overflow: visible;
 }
 
 .image-item {
@@ -349,7 +361,7 @@ main, section, header, footer {
 }
 
 .story-section {
-  padding: 100px 0;
+  padding: 180px 0; /* 120px에서 180px로 증가 */
 }
 
 .story-container {
@@ -526,7 +538,7 @@ main, section, header, footer {
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 기본 데스크탑: 4컬럼 */
+  grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
@@ -534,7 +546,7 @@ main, section, header, footer {
 }
 
 .menu-item {
-  display: none;
+  display: none; /* Hidden by default */
   text-align: center;
 }
 
@@ -544,10 +556,10 @@ main, section, header, footer {
 
 .menu-item img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1 / 1; /* Keep images square */
+  object-fit: cover;
   border-radius: 20px;
   margin-bottom: 20px;
-  object-fit: cover; /* 이미지 비율 유지 */
 }
 
 .menu-item h3 {
@@ -561,57 +573,24 @@ main, section, header, footer {
   color: rgba(255, 255, 255, 0.8);
 }
 
+/* Tablet and smaller desktop screens */
 @media (max-width: 1024px) {
   .menu-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2컬럼으로 변경 */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
     gap: 20px;
     padding: 0 16px;
   }
-
+  
   .menu-item img {
     margin-bottom: 15px;
   }
-
-  .menu-item h3 {
-    font-size: 20px; /* 글자 크기 약간 축소 */
-    margin-bottom: 8px;
-  }
-
-  .menu-item p {
-    font-size: 14px;
-  }
 }
 
-@media (max-width: 768px) {
-  .hero-logo {
-    width: 220px;
-  }
-
-  .menu-item img {
-    max-width: 280px;
-  }
-
-  .menu-item h3 {
-    font-size: 22px;
-  }
-}
-
+/* Small mobile screens */
 @media (max-width: 480px) {
-  .hero-logo {
-    width: 180px;
-  }
-
   .menu-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .menu-item img {
-    max-width: 240px;
-  }
-
-  .menu-item h3 {
-    font-size: 20px;
+    gap: 16px;
+    padding: 0 12px;
   }
 }
 
@@ -881,7 +860,7 @@ body {
 /* ✅ 스크롤에 따라 고정되는 네비게이션 */
 .main-nav {
   position: sticky !important; /* fixed가 아닌 sticky로 변경 */
-  top: 20px !important;
+  top: 60px !important;
   left: 0;
   right: 0;
   width: 100%;
@@ -892,18 +871,27 @@ body {
 }
 
 .nav-container {
-  pointer-events: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-  padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50px;
-  width: fit-content;
-  max-width: 90%;
+    pointer-events: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    width: fit-content;
+    max-width: 90%;
+    transition: all 0.3s ease; /* 부드러운 전환 효과 추가 */
+}
+
+/* 스크롤 시 진해지는 효과 */
+.main-nav.compact .nav-container {
+    background: rgba(0, 0, 0, 0.7); /* 더 진한 배경색 */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* 모바일 대응 */
@@ -933,10 +921,13 @@ body {
     padding: 8px 16px;
     transition: all 0.3s ease;
     font-family: var(--font-quicksand);
+    opacity: 0.7; /* 기본 상태는 약간 투명하게 */
 }
 
-.nav-link:hover {
-    opacity: 0.8;
+.nav-link:hover,
+.nav-link.active {
+    opacity: 1;
+    color: #98E2CF; /* 활성화 상태일 때 색상 변경 */
 }
 
 .menu-toggle {
@@ -1079,18 +1070,17 @@ body.menu-active .hamburger::after {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 500%; /* 5개의 슬라이드를 위한 너비 */
     height: 100%;
     display: flex;
 }
 
-.slide {
+.hero-slide {
     position: relative;
-    min-width: 100%;
+    min-width: 100vw; /* 뷰포트 너비만큼의 최소 너비 */
     height: 100%;
     background-size: cover;
     background-position: center;
-    transition: transform 1s linear;
     flex-shrink: 0;
 }
 
@@ -1294,7 +1284,8 @@ body.menu-active .hamburger::after {
     }
 
     .featured-menu {
-        margin-top: 300px; /* 모바일에서는 여백 줄임 */
+        padding: 160px 0;
+        margin-top: 40px;
     }
 
     .footer-signup {
@@ -1445,7 +1436,8 @@ html {
 
 /* 호버 효과 */
 .image-container:hover {
-    transform: scale(1.05) rotate(0);
+    transform: scale(1.03) rotate(0);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     z-index: 4;
 }
 
@@ -1705,8 +1697,8 @@ html {
 
 /* EXPLORE 섹션 스타일 */
 .explore-section {
-    padding: 120px 0;
-    margin-top: 0; /* 이전 마진 제거 */
+    padding: 240px 0; /* 120px에서 240px로 증가 */
+    margin-top: 60px; /* 새로운 상단 여백 추가 */
 }
 
 .explore-container {
@@ -1777,7 +1769,8 @@ html {
 /* 반응형 스타일 */
 @media (max-width: 768px) {
     .explore-section {
-        padding: 80px 0;
+        padding: 160px 0;
+        margin-top: 40px;
     }
 
     .explore-container {
@@ -2074,6 +2067,107 @@ html {
 }
 
 #featured-menu {
-    scroll-margin-top: 0;
+    scroll-margin-top: 100px;
+    position: relative;
+    z-index: 3;
+}
+
+/* 프리로더 스타일 */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: all 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* 그레인 텍스처 오버레이 */
+#preloader::before {
+    content: "";
+    position: absolute;
+    top: -150%;
+    left: -50%;
+    width: 300%;
+    height: 300%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.12;
+    pointer-events: none;
+    animation: noise 1s steps(2) infinite;
+}
+
+/* 프리로더 로고 스타일 */
+#preloader img {
+    width: 120px;
+    height: auto;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: logoFloat 0.8s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+    filter: brightness(1.2) contrast(1.1);
+    position: relative;
+    z-index: 2;
+}
+
+/* 로딩 완료 시 프리로더 트랜지션 */
+body.loaded #preloader {
+    transform: translateY(-100%);
+}
+
+/* 로고 등장 애니메이션 */
+@keyframes logoFloat {
+    0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(0); /* ✅ 0.5초 동안 그대로 멈춤 */
+      }
+      100% {
+        transform: translateY(-20px); /* 이후 부드럽게 올라감 */
+      }
+    }
+    
+
+/* 로고 퇴장 애니메이션 */
+@keyframes logoExit {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.8);
+    }
+}
+
+/* 그레인 애니메이션 */
+@keyframes noise {
+    0% { transform: translate(0,0) }
+    10% { transform: translate(-5%,-5%) }
+    20% { transform: translate(-10%,5%) }
+    30% { transform: translate(5%,-10%) }
+    40% { transform: translate(-5%,15%) }
+    50% { transform: translate(-10%,5%) }
+    60% { transform: translate(15%,0) }
+    70% { transform: translate(0,10%) }
+    80% { transform: translate(-15%,0) }
+    90% { transform: translate(10%,5%) }
+    100% { transform: translate(5%,0) }
+}
+
+/* 메인 컨텐츠 트랜지션 */
+#main-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+body.loaded #main-content {
+    opacity: 1;
+    transform: translateY(0);
 }
 

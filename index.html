@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 🌿 기본 메타 정보 -->
-    <title>옥차방 | 레트로 구슬 아이스크림 브랜드</title>
-    <meta name="description" content="모든 세대가 함께 추억을 나누고, 따뜻한 행운을 만나는 공간 – 복고 감성과 현대적 감각이 조화를 이루는 티&디저트 하우스 '옥차방'입니다.">
-    <meta name="keywords" content="옥차방, 티하우스, 복고 카페, 구슬아이스크림, 행운의 공간, 디저트카페, 부산 티카페, 레트로 카페, 다방 감성, 감성카페">
+    <title>옥차방 | 행운의 구슬 아이스크림</title>
+    <meta name="description" content="옥차방은 복고와 현대적 감성을 담아, 구슬 아이스크림과 스페셜 음료를 제공하는 따뜻한 사랑방 같은 카페입니다.">
+    <meta name="keywords" content="옥차방, 구슬아이스크림, 복고카페, 행운, 레트로 모던, 카페, 디저트, 음료">
     <meta name="author" content="옥차방 Okchabang">
 
     <!-- 🌐 Open Graph (SNS 공유) -->
-    <meta property="og:title" content="옥차방 | 따뜻한 행운을 나누는 복고 감성 구슬 아이스크림 브랜드">
-    <meta property="og:description" content="복고적인 따뜻함과 현대적 감성이 어우러진 티&디저트 카페. 모두가 함께하는 사랑방, 옥차방으로 초대합니다.">
-    <meta property="og:image" content="image/og-img.png">
+    <meta property="og:title" content="옥차방 | 행운을 담은 레트로 모던 카페">
+    <meta property="og:description" content="복고와 현대적 감성을 담아 행운을 전하는 옥차방에서 특별한 디저트와 음료를 경험하세요.">
+    <meta property="og:image" content="https://okchabang.com/assets/og-image.jpg">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://okchabang.com/">
+    <meta property="og:url" content="https://okchabang.com">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="옥차방 Okchabang">
 
@@ -35,7 +35,13 @@
     <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
 
     <!-- 🎨 브랜딩 웹폰트 -->
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" 
+          as="style" 
+          onload="this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" 
+              rel="stylesheet">
+    </noscript>
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/pretendard.css" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
@@ -48,6 +54,31 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXX'); // 여기에 본인의 GA4 ID 넣기
+    </script>
+
+    <!-- AOS 라이브러리 추가 -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000,  // 애니메이션 지속 시간 (1초)
+                once: true       // 애니메이션을 한 번만 실행
+            });
+
+            // 네비게이션 스크롤 효과
+            const mainNav = document.querySelector('.main-nav');
+            let lastScrollY = window.scrollY;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    mainNav.classList.add('compact');
+                } else {
+                    mainNav.classList.remove('compact');
+                }
+                lastScrollY = window.scrollY;
+            });
+        });
     </script>
 
     <style>
@@ -189,7 +220,10 @@
 
         /* 컴팩트 모드 */
         .main-nav.compact {
-            height: 60px;
+            height: 50px;
+            backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
         }
 
         .main-nav.compact .nav-container {
@@ -575,6 +609,47 @@
         .hamburger-menu.active .hamburger-line:nth-child(3) {
             transform: translateY(-7px) rotate(-45deg);
         }
+
+        /* 메뉴 아이템 호버 효과 */
+        .menu-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 모바일 네비게이션 */
+        .mobile-nav-menu li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        /* 404 페이지 스타일 */
+        .error-404 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            background-color: #000;
+            color: #FFFFFF;
+        }
+
+        .error-404 h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-quicksand);
+        }
+
+        .error-404 p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
     </style>
 </head>
 <body class="loading">
@@ -607,7 +682,7 @@
         <!-- Navigation -->
         <nav class="main-nav">
             <div class="nav-container">
-                <a href="#" class="nav-link active" data-section="home">HOME</a>
+                <a href="#" class="nav-link" data-section="home">HOME</a>
                 <a href="#story-section" class="nav-link" data-section="story">ABOUT</a>
                 <a href="#featured-menu" class="nav-link" data-section="menu">MENU</a>
                 <a href="#explore" class="nav-link" data-section="explore">EXPLORE</a>
