@@ -162,20 +162,29 @@
         }
 
         .hero-slider {
-            position: absolute;
-            width: calc(500% + 80px);
-            height: 100%;
             display: flex;
-            gap: 20px;
-            transform: translateX(calc(-100vw - 20px));
+            width: max-content;
+            height: 100%;
+            transition: transform 0.8s ease, gap 0.8s ease;
+            gap: 0px;
         }
 
         .hero-slide {
-            width: 100vw;
-            height: 100%;
+            flex: 0 0 100vw;
+            height: 100vh;
             background-size: cover;
             background-position: center;
-            flex-shrink: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
         }
 
         .hero-content {
@@ -183,25 +192,15 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 9999;
+            z-index: 2;
             text-align: center;
             pointer-events: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: auto;
-            padding: 0;
-            opacity: 1;
-            visibility: visible;
         }
 
         .hero .hero-logo {
             width: 224px;
             height: auto;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-            margin: 0;
-            opacity: 1;
-            visibility: visible;
         }
 
         @media screen and (max-width: 768px) {
@@ -963,35 +962,6 @@
     
     <!-- 햄버거 메뉴 스크립트 추가 -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const hamburger = document.querySelector('.hamburger-menu');
-            const mobileNav = document.querySelector('.mobile-nav');
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            if (hamburger && mobileNav) {
-                hamburger.addEventListener('click', () => {
-                    hamburger.classList.toggle('active');
-                    mobileNav.classList.toggle('active');
-                    document.body.classList.toggle('menu-active');
-                });
-
-                // 모든 네비게이션 링크에 대한 클릭 이벤트
-                navLinks.forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        // 모든 링크에서 active 클래스 제거
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        // 클릭된 링크에 active 클래스 추가
-                        e.target.classList.add('active');
-
-                        // 모바일 메뉴가 열려있을 경우 닫기
-                        if (mobileNav.classList.contains('active')) {
-                            hamburger.classList.remove('active');
-                            mobileNav.classList.remove('active');
-                            document.body.classList.remove('menu-active');
-                        }
-                    });
-                });
-
                 // 스크롤 시 현재 섹션에 해당하는 메뉴 활성화
                 window.addEventListener('scroll', () => {
                     const sections = ['home', 'story', 'menu', 'explore', 'franchise'];
