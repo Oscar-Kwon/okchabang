@@ -5,6 +5,52 @@
     box-sizing: border-box;
 }
 
+/* 지도 컨테이너 스타일 */
+.map-container {
+    width: 100%;
+    height: 500px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+/* 백업 이미지 스타일 */
+.map-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('image/map-placeholder.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+/* 지도 로드 실패 메시지 */
+.map-container::after {
+    content: 'MAP';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-quicksand);
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.6);
+    z-index: 2;
+}
+
+/* 반응형 지도 스타일 */
+@media (max-width: 768px) {
+    .map-container {
+        height: 400px;
+    }
+}
+
 /* 공통 버튼 스타일 */
 .learn-more-btn,      /* 브랜드 소개 */
 .cta-button,         /* 창업 문의 */
@@ -281,8 +327,8 @@ main, section, header, footer {
 }
 
 .franchise-cta {
-  padding: 100px 0;
   margin-top: 500px;
+  padding: 100px 0;
 }
 
 .occhabang-story-section {
@@ -1759,92 +1805,130 @@ html {
 }
 
 .franchise-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 30px;
-    gap: 40px;
 }
 
 /* 텍스트 영역 스타일 */
 .franchise-text {
-    flex: 1;
-    max-width: 600px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px; /* 아래 여백 추가 */
 }
 
 .franchise-title {
     font-family: 'Pretendard', sans-serif;
     font-size: 38px;
     font-weight: 300;
-    margin-bottom: 20px;
     color: #FFFFFF;
-    text-align: left;
+    margin-bottom: 20px;
 }
 
 .franchise-subtitle {
     font-size: 18px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 30px;
-    text-align: left;
+}
+
+/* 폼과 이미지 컨테이너 */
+.franchise-form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+/* 폼 영역 스타일 */
+.franchise-form {
+    width: 100%;
+}
+
+.franchise-form .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px; /* 폼 최대 너비 제한 */
+}
+
+.franchise-form .signup-input {
+    background: rgba(187, 187, 187, 0.15);
+    border: 1px solid rgba(136, 136, 136, 0.1);
+    border-radius: 30px;
+    padding: 12px 20px;
+    color: #FFFFFF;
+    font-size: 14px;
+    width: 100%;
+}
+
+.franchise-form .signup-textarea {
+    min-height: 120px;
+    resize: vertical;
+    border-radius: 20px;
+    font-family: inherit;
 }
 
 /* 이미지 영역 스타일 */
 .franchise-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px; /* 이미지 추가 전까지의 임시 높이 */
-}
-
-/* CTA 버튼 스타일 */
-.cta-button {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 100px;
-    color: #FFFFFF;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
 }
 
 /* 반응형 스타일 */
 @media (max-width: 768px) {
     .franchise-cta {
         margin-top: 300px;
+        padding: 60px 0;
     }
 
     .franchise-container {
-        flex-direction: column;
-        text-align: center;
+        padding: 0 20px;
     }
 
     .franchise-text {
-        max-width: 100%;
+        margin-bottom: 40px;
     }
 
     .franchise-title {
         font-size: 32px;
-        text-align: center;
     }
 
     .franchise-subtitle {
         font-size: 16px;
-        text-align: center;
+    }
+
+    .franchise-form-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .franchise-form {
+        display: flex;
+        justify-content: center;
+    }
+
+    .franchise-form .signup-form {
+        max-width: 400px;
+        margin: 0 auto;
     }
 
     .franchise-image {
-        min-height: 300px;
-        width: 100%;
-        margin-top: 30px;
+        display: none; /* 모바일에서는 이미지 영역 숨김 */
+    }
+}
+
+/* 더 작은 모바일 화면 대응 */
+@media (max-width: 480px) {
+    .franchise-container {
+        padding: 0 16px;
+    }
+
+    .franchise-form .signup-form {
+        max-width: 100%;
     }
 }
 
@@ -1854,8 +1938,8 @@ html {
 
 /* EXPLORE 섹션 스타일 */
 .explore-section {
-    padding: 240px 0; /* 120px에서 240px로 증가 */
-    margin-top: 60px; /* 새로운 상단 여백 추가 */
+    padding: 240px 0;
+    margin-top: 60px;
 }
 
 .explore-container {
@@ -1868,26 +1952,33 @@ html {
     align-items: start;
 }
 
+.explore-text {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .explore-text .section-title {
     font-family: var(--font-quicksand);
     font-size: 38px;
     font-weight: 400;
     color: #FFFFFF;
     text-align: left;
-    margin-bottom: 30px;
+    margin-bottom: 0;
 }
 
 .explore-description {
     font-size: 18px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .store-list {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    margin-bottom: 60px;
 }
 
 .store-item {
@@ -1921,6 +2012,7 @@ html {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
 }
 
 /* 반응형 스타일 */
@@ -1935,6 +2027,10 @@ html {
         gap: 40px;
     }
 
+    .explore-text {
+        gap: 20px;
+    }
+
     .explore-text .section-title {
         font-size: 32px;
         text-align: center;
@@ -1943,11 +2039,12 @@ html {
     .explore-description {
         font-size: 16px;
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
     .store-list {
         gap: 20px;
+        margin-bottom: 40px;
     }
 
     .store-item {
@@ -1956,6 +2053,7 @@ html {
 
     .map-container {
         height: 400px;
+        margin-top: 0;
     }
 }
 

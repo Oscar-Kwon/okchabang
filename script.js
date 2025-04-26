@@ -2,12 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // 1. 프리로더 관리
     function handlePreloader() {
         if (document.readyState === 'complete') {
-            document.body.classList.remove('loading');
-            document.body.classList.add('loaded');
-        } else {
-            window.addEventListener('load', () => {
+            setTimeout(() => {
                 document.body.classList.remove('loading');
                 document.body.classList.add('loaded');
+            }, 1300); // 1.3초 대기
+        } else {
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    document.body.classList.remove('loading');
+                    document.body.classList.add('loaded');
+                }, 1300); // 1.3초 대기
             });
         }
     }

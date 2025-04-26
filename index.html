@@ -637,6 +637,186 @@
             font-size: 1.5rem;
             color: rgba(255, 255, 255, 0.8);
         }
+
+        /* 지도 컨테이너 스타일 수정 */
+        .map-container {
+            width: 100%;
+            height: 500px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.05); /* 배경색 추가 */
+            position: relative; /* 포지션 추가 */
+        }
+
+        /* 백업 이미지 스타일 */
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('image/map-placeholder.png'); /* 임시 지도 이미지 */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        /* 지도 로드 실패 메시지 */
+        .map-container::after {
+            content: 'MAP';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-quicksand);
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.6);
+            z-index: 2;
+        }
+
+        /* 반응형 스타일 유지 */
+        @media (max-width: 768px) {
+            .map-container {
+                height: 400px;
+            }
+        }
+
+        /* 프랜차이즈 섹션 스타일 수정 */
+        .franchise-cta {
+            margin-top: 500px;
+            padding: 100px 0;
+        }
+
+        .franchise-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* 텍스트 영역 스타일 */
+        .franchise-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px; /* 아래 여백 추가 */
+        }
+
+        .franchise-title {
+            font-family: 'Pretendard', sans-serif;
+            font-size: 38px;
+            font-weight: 300;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        .franchise-subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* 폼과 이미지 컨테이너 */
+        .franchise-form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        /* 폼 영역 스타일 */
+        .franchise-form {
+            width: 100%;
+        }
+
+        .franchise-form .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 500px; /* 폼 최대 너비 제한 */
+        }
+
+        .franchise-form .signup-input {
+            background: rgba(187, 187, 187, 0.15);
+            border: 1px solid rgba(136, 136, 136, 0.1);
+            border-radius: 30px;
+            padding: 12px 20px;
+            color: #FFFFFF;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .franchise-form .signup-textarea {
+            min-height: 120px;
+            resize: vertical;
+            border-radius: 20px;
+            font-family: inherit;
+        }
+
+        /* 이미지 영역 스타일 */
+        .franchise-image {
+            width: 100%;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            .franchise-cta {
+                margin-top: 300px;
+                padding: 60px 0;
+            }
+
+            .franchise-container {
+                padding: 0 20px;
+            }
+
+            .franchise-text {
+                margin-bottom: 40px;
+            }
+
+            .franchise-title {
+                font-size: 32px;
+            }
+
+            .franchise-subtitle {
+                font-size: 16px;
+            }
+
+            .franchise-form-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .franchise-form {
+                display: flex;
+                justify-content: center;
+            }
+
+            .franchise-form .signup-form {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .franchise-image {
+                display: none; /* 모바일에서는 이미지 영역 숨김 */
+            }
+        }
+
+        /* 더 작은 모바일 화면 대응 */
+        @media (max-width: 480px) {
+            .franchise-container {
+                padding: 0 16px;
+            }
+
+            .franchise-form .signup-form {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body class="loading">
@@ -864,20 +1044,36 @@
                 </div>
 
                 <!-- 오른쪽 컬럼: 네이버 지도 -->
-                <div id="map" class="map-container"></div>
+                <div id="map" class="map-container" aria-label="매장 위치 지도">
+                    <!-- 지도가 로드되지 않을 경우 표시될 내용 -->
+                </div>
             </div>
         </section>
 
         <!-- ✨ 프랜차이즈 CTA 추가 -->
         <section id="franchise" class="franchise-cta">
             <div class="franchise-container">
-                <div class="franchise-image">
-                    <!-- 왼쪽 이미지 영역 -->
-                </div>
+                <!-- 상단 텍스트 영역 -->
                 <div class="franchise-text">
                     <h2 class="franchise-title">옥차방 창업에 관심 있으신가요?</h2>
                     <p class="franchise-subtitle">레트로 감성 아이스크림 브랜드, 지금 바로 창업 문의하세요.</p>
-                    <a href="https://tally.so/r/your-form-id" class="cta-button">창업 문의</a>
+                </div>
+                
+                <!-- 폼과 이미지 컨테이너 -->
+                <div class="franchise-form-container">
+                    <!-- 왼쪽 폼 영역 -->
+                    <div class="franchise-form">
+                        <form class="signup-form">
+                            <input type="text" placeholder="이름" class="signup-input">
+                            <input type="tel" placeholder="연락처" class="signup-input">
+                            <input type="text" placeholder="창업희망지역" class="signup-input">
+                            <textarea placeholder="문의내용" class="signup-input signup-textarea"></textarea>
+                            <button type="submit" class="signup-btn">제출하기</button>
+                        </form>
+                    </div>
+                    
+                    <!-- 오른쪽 이미지 영역 -->
+                    <div class="franchise-image"></div>
                 </div>
             </div>
         </section>
