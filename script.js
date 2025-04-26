@@ -1,4 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // preloader 관련 코드 수정
+  function hidePreloader() {
+    const preloader = document.getElementById('preloader');
+    const body = document.body;
+    
+    // 1.3초 동안 preloader 유지
+    setTimeout(() => {
+      if (preloader && body) {
+        body.classList.remove('loading');
+        body.classList.add('loaded');
+        
+        // 트랜지션 애니메이션을 위한 추가 시간
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 800); // CSS 트랜지션 시간
+      }
+    }, 1300); // 1.3초 지연
+  }
+
+  // 페이지 로드 완료 시 타이머 시작
+  if (document.readyState === 'complete') {
+    hidePreloader();
+  } else {
+    window.addEventListener('load', hidePreloader);
+  }
+
   const section = document.querySelector('.brand-story');
   const image1 = document.getElementById('image1');
   const image2 = document.getElementById('image2');
@@ -172,26 +198,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // 초기 카테고리 설정
   toggleMenuCategory('icecream');
 
-  // 햄버거 메뉴 관련 요소들
-  const menuToggle = document.querySelector('.menu-toggle');
-  const body = document.body;
-  const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  // 햄버거 메뉴 관련 코드 수정
+  const hamburger = document.querySelector('.hamburger-menu');
+  const mobileNav = document.querySelector('.mobile-nav');
 
-  // 햄버거 메뉴 토글
-  menuToggle.addEventListener('click', () => {
-    body.classList.toggle('menu-active');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('active');
+    document.body.classList.toggle('menu-active');
   });
 
-  // 오버레이 클릭시 메뉴 닫기
-  mobileMenuOverlay.addEventListener('click', () => {
-    body.classList.remove('menu-active');
-  });
-
-  // 모바일 메뉴 링크 클릭시 메뉴 닫기
-  mobileNavLinks.forEach(link => {
+  // 메뉴 링크 클릭하면 메뉴 닫기
+  const menuLinks = document.querySelectorAll('.mobile-nav-menu a');
+  menuLinks.forEach(link => {
     link.addEventListener('click', () => {
-      body.classList.remove('menu-active');
+      hamburger.classList.remove('active');
+      mobileNav.classList.remove('active');
+      document.body.classList.remove('menu-active');
     });
   });
 
@@ -200,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     if (Math.abs(currentScroll - lastScroll) > 50) {
-      body.classList.remove('menu-active');
+      document.body.classList.remove('menu-active');
       lastScroll = currentScroll;
     }
   });
@@ -223,4 +246,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 페이지 로드 시 지도 초기화
   window.addEventListener('load', initMap);
+
+  const sliderTrack = document.querySelector('.slider-track');
+  const slides = document.querySelectorAll('.slide');
+  const slideCount = slides.length / 2; // 실제 슬라이드 개수 (복제 제외)
+  let currentSlide = 0;
+  
+  function moveSlide() {
+    currentSlide++;
+    sliderTrack.style.transition = 'transform 1s ease-in-out';
+    sliderTrack.style.transform = `translateX(-${(currentSlide * 100) / slides.length}%)`;
+    
+    // 마지막 슬라이드에 도달했을 때
+    if (currentSlide === slideCount) {
+      // 애니메이션이 끝난 후 첫 번째 슬라이드로 즉시 이동 (트랜지션 없이)
+      setTimeout(() => {
+        sliderTrack.style.transition = 'none';
+        currentSlide = 0;
+        sliderTrack.style.transform = `translateX(0)`;
+      }, 1000);
+    }
+  }
+
+  // 5초마다 슬라이드 이동
+  setInterval(moveSlide, 5000);
 });
