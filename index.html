@@ -217,18 +217,6 @@
             scroll-margin-top: 70px;
         }
 
-        /* 컴팩트 모드 */
-        .main-nav.compact {
-            height: 50px;
-            backdrop-filter: blur(6px);
-            background: rgba(0, 0, 0, 0.7);
-            transition: all 0.3s ease;
-        }
-
-        .main-nav.compact .nav-container {
-            padding: 0.8rem 1.5rem;
-            background: rgba(0, 0, 0, 0.3);
-        }
 
         /* 모바일 대응 */
         @media screen and (max-width: 1024px) { /* 태블릿 크기(1024px)부터 적용 */
@@ -744,8 +732,7 @@
             <div class="category-buttons">
                 <button class="category-btn active" data-category="icecream">IceCream</button>
                 <button class="category-btn" data-category="coffee">Coffee</button>
-                <button class="category-btn" data-category="tea">Tea</button>
-                <button class="category-btn" data-category="ade">Ade</button>
+                <button class="category-btn" data-category="beverage">Tea & Ade</button>
             </div>
 
             <div class="menu-grid">
@@ -808,45 +795,43 @@
                     <p>Vanilla Latte</p>
                 </div>
 
-                <!-- Tea 메뉴 -->
-                <div class="menu-item" data-category="tea">
+                <!-- Tea & Ade 메뉴 -->
+                <div class="menu-item" data-category="beverage">
                     <img src="menu/menu-milktea.png" alt="밀크티">
                     <h3>밀크티</h3>
                     <p>Milk Tea</p>
                 </div>
-                <div class="menu-item" data-category="tea">
+                <div class="menu-item" data-category="beverage">
                     <img src="menu/menu-greentealatte.png" alt="그린티라떼">
                     <h3>그린티라떼</h3>
                     <p>Green Tea Latte</p>
                 </div>
-                <div class="menu-item" data-category="tea">
+                <div class="menu-item" data-category="beverage">
                     <img src="menu/menu-lemontea.png" alt="레몬티">
                     <h3>레몬티</h3>
                     <p>Lemon Tea</p>
                 </div>
-                <div class="menu-item" data-category="tea">
+                <div class="menu-item" data-category="beverage">
                     <img src="menu/menu-grapefruittea.png" alt="자몽티">
                     <h3>자몽티</h3>
                     <p>Grapefruit Tea</p>
                 </div>
-                <div class="menu-item" data-category="tea">
+                <div class="menu-item" data-category="beverage">
                     <img src="menu/menu-icedtea.png" alt="아이스티">
                     <h3>아이스티</h3>
                     <p>Iced Tea</p>
                 </div>
-
-                <!-- Ade 메뉴 -->
-                <div class="menu-item" data-category="ade">
+                <div class="menu-item" data-category="beverage">
                     <img src="menu/menu-lemonade.png" alt="레모네이드">
                     <h3>레모네이드</h3>
                     <p>Lemonade</p>
                 </div>
-                <div class="menu-item" data-category="ade">
+                <div class="menu-item" data-category="beverage">
                     <img src="menu/menu-grapefruitade.png" alt="자몽에이드">
                     <h3>자몽에이드</h3>
                     <p>Grapefruit Ade</p>
                 </div>
-                <div class="menu-item" data-category="ade">
+                <div class="menu-item" data-category="beverage">
                     <img src="menu/menu-greengrapeade.png" alt="청포도에이드">
                     <h3>청포도에이드</h3>
                     <p>Green Grape Ade</p>
@@ -936,8 +921,8 @@
                 <!-- 협업 및 제휴문의 폼 -->
                 <div class="contact-form" style="width: 100%; display: flex; justify-content: center;">
                     <form class="signup-form" style="width: 100%; max-width: 400px; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-                        <input type="text" placeholder="작성자 성함" class="signup-input" style="width: 100%;">
-                        <input type="email" placeholder="연락받으실 이메일" class="signup-input" style="width: 100%;">
+                        <input type="text" placeholder="작성자분 성함" class="signup-input" style="width: 100%;">
+                        <input type="email" placeholder="연락 이메일" class="signup-input" style="width: 100%;">
                         <button type="submit" class="signup-btn">제휴 문의하기</button>
                     </form>
                 </div>
@@ -962,28 +947,30 @@
     
     <!-- 햄버거 메뉴 스크립트 추가 -->
     <script>
-                // 스크롤 시 현재 섹션에 해당하는 메뉴 활성화
-                window.addEventListener('scroll', () => {
-                    const sections = ['home', 'story', 'menu', 'explore', 'franchise'];
-                    const currentSection = sections.find(section => {
-                        if (section === 'home') {
-                            return window.scrollY < 100;
-                        }
-                        const element = document.querySelector(`#${section}-section`) || 
-                                      document.querySelector(`#${section}`);
-                        if (!element) return false;
-                        const rect = element.getBoundingClientRect();
-                        return rect.top <= 100 && rect.bottom >= 100;
-                    });
-
-                    if (currentSection) {
-                        navLinks.forEach(link => {
-                            link.classList.toggle('active', 
-                                link.getAttribute('data-section') === currentSection);
-                        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            // 스크롤 시 현재 섹션에 해당하는 메뉴 활성화
+            window.addEventListener('scroll', () => {
+                const sections = ['home', 'story', 'menu', 'explore', 'franchise'];
+                const currentSection = sections.find(section => {
+                    if (section === 'home') {
+                        return window.scrollY < 100;
                     }
+                    const element = document.querySelector(`#${section}-section`) || 
+                                  document.querySelector(`#${section}`);
+                    if (!element) return false;
+                    const rect = element.getBoundingClientRect();
+                    return rect.top <= 100 && rect.bottom >= 100;
                 });
-            }
+
+                if (currentSection) {
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', 
+                            link.getAttribute('data-section') === currentSection);
+                    });
+                }
+            });
         });
     </script>
 </body>

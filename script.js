@@ -143,6 +143,35 @@ document.addEventListener('DOMContentLoaded', function() {
         updateActiveSection();
     }
 
+    // 7. 메뉴 카테고리 필터링
+    function initMenuFilter() {
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        function showCategory(category) {
+            // 버튼 active 상태 관리
+            categoryButtons.forEach(button => {
+                button.classList.toggle('active', button.dataset.category === category);
+            });
+
+            // 메뉴 아이템 active 상태 관리
+            menuItems.forEach(item => {
+                item.classList.toggle('active', item.dataset.category === category);
+            });
+        }
+
+        // 기본: IceCream 카테고리 보여주기
+        showCategory('icecream');
+
+        // 버튼 클릭 이벤트
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedCategory = button.getAttribute('data-category');
+                showCategory(selectedCategory);
+            });
+        });
+    }
+
     // 모든 기능 초기화
     function initializeAll() {
         handlePreloader();
@@ -151,231 +180,9 @@ document.addEventListener('DOMContentLoaded', function() {
         initHeroSlider();
         initMobileMenu();
         initScrollSpy();
+        initMenuFilter();
     }
 
     // 실행
     initializeAll();
-
-    const section = document.querySelector('.brand-story');
-    const image1 = document.getElementById('image1');
-    const image2 = document.getElementById('image2');
-    const image3 = document.getElementById('image3');
-    const text = document.querySelector('.brand-text');
-    
-    let ticking = false;
-
-    function updateImagesOnScroll(scrollProgress) {
-        // 이미지 2 애니메이션
-        if (scrollProgress > 0.15) {
-            const progress2 = Math.min(1, (scrollProgress - 0.15) / 0.3);
-            const translateY2 = 100 * (1 - progress2);
-            const translateX2 = progress2 * -10; // 좌우 오프셋 추가
-            image2.style.transform = `translate(calc(-50% + ${translateX2}%), calc(-50% + ${translateY2}vh))`;
-            image2.style.opacity = progress2;
-        } else {
-            image2.style.transform = 'translate(-50%, calc(-50% + 100vh))';
-            image2.style.opacity = 0;
-        }
-
-        // 이미지 3 애니메이션
-        if (scrollProgress > 0.45) {
-            const progress3 = Math.min(1, (scrollProgress - 0.45) / 0.3);
-            const translateY3 = 200 * (1 - progress3);
-            const translateX3 = progress3 * 10; // 좌우 오프셋 추가
-            image3.style.transform = `translate(calc(-50% + ${translateX3}%), calc(-50% + ${translateY3}vh))`;
-            image3.style.opacity = progress3;
-        } else {
-            image3.style.transform = 'translate(-50%, calc(-50% + 200vh))';
-            image3.style.opacity = 0;
-        }
-
-        // 스택 효과 적용
-        if (scrollProgress > 0.8) {
-            image1.style.transform = 'translate(-60%, -50%)';
-            image2.style.transform = 'translate(-40%, -50%)';
-            image3.style.transform = 'translate(-50%, -50%)';
-        }
-
-        // 텍스트 애니메이션
-        if (scrollProgress > 0.5) {
-            text.style.opacity = 1;
-            text.style.transform = 'translateY(0)';
-        } else {
-            text.style.opacity = 0;
-            text.style.transform = 'translateY(20px)';
-        }
-    }
-
-    function onScroll() {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                const rect = section.getBoundingClientRect();
-                const scrollProgress = Math.max(0, Math.min(1, 
-                    -rect.top / (rect.height - window.innerHeight)
-                ));
-                
-                updateImagesOnScroll(scrollProgress);
-                ticking = false;
-            });
-
-            ticking = true;
-        }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // 초기 상태 설정
-
-    const categoryChips = document.querySelectorAll('.category-chip');
-    const menuCategories = document.querySelectorAll('.menu-category');
-
-    // 카테고리 변경 함수
-    function changeCategory(categoryName) {
-        // 모든 칩 비활성화
-        categoryChips.forEach(chip => {
-            chip.classList.remove('active');
-        });
-
-        // 선택된 칩 활성화
-        const activeChip = document.querySelector(`[data-category="${categoryName}"]`);
-        activeChip.classList.add('active');
-
-        // 모든 메뉴 카테고리 숨기기
-        menuCategories.forEach(category => {
-            category.classList.remove('active');
-        });
-
-        // 선택된 카테고리 표시
-        const activeCategory = document.querySelector(`.menu-category[data-category="${categoryName}"]`);
-        activeCategory.classList.add('active');
-    }
-
-    // 칩 클릭 이벤트 리스너
-    categoryChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            const category = chip.dataset.category;
-            changeCategory(category);
-        });
-    });
-
-    // 메뉴 데이터 (실제 데이터로 교체 필요)
-    const menuData = {
-        icecream: [
-            {
-                image: 'image/marble-latte.png',
-                title: '말차 마블 라떼',
-                description: '마블 아이스크림과 프리미엄 말차의 달콤한 조화'
-            },
-            // 추가 아이스크림 메뉴...
-        ],
-        coffee: [
-            {
-                image: 'image/coffee1.png',
-                title: '시그니처 커피',
-                description: '깊은 풍미가 느껴지는 프리미엄 블렌드'
-            },
-            // 추가 커피 메뉴...
-        ],
-        // 다른 카테고리 메뉴...
-    };
-
-    // 메뉴 렌더링 함수
-    function renderMenuItems(category) {
-        const menuContainer = document.querySelector(`.menu-category[data-category="${category}"]`);
-        const items = menuData[category];
-
-        menuContainer.innerHTML = items.map(item => `
-            <div class="menu-item">
-                <img src="${item.image}" alt="${item.title}">
-                <h3>${item.title}</h3>
-                <p>${item.description}</p>
-            </div>
-        `).join('');
-    }
-
-    // 초기 메뉴 렌더링
-    Object.keys(menuData).forEach(category => {
-        renderMenuItems(category);
-    });
-
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const menuItems = document.querySelectorAll('.menu-item');
-
-    function toggleMenuCategory(category) {
-        // 모든 버튼 비활성화
-        categoryButtons.forEach(btn => btn.classList.remove('active'));
-
-        // 선택된 버튼 활성화
-        const activeBtn = document.querySelector(`.category-btn[data-category="${category}"]`);
-        if (activeBtn) activeBtn.classList.add('active');
-
-        // 메뉴 아이템 필터링
-        menuItems.forEach(item => {
-            if (item.dataset.category === category) {
-                item.style.display = 'flex'; // flex로 표시하여 내부 요소들 중앙 정렬
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    }
-
-    // 카테고리 버튼 클릭 이벤트
-    categoryButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const selectedCategory = btn.dataset.category;
-            toggleMenuCategory(selectedCategory);
-        });
-    });
-
-    // 초기 카테고리 설정
-    toggleMenuCategory('icecream');
-
-    // 네이버 지도 초기화
-    function initMap() {
-        var mapOptions = {
-            center: new naver.maps.LatLng(35.0987, 129.0403), // 부산 중구 롯데백화점 기준
-            zoom: 15
-        };
-
-        var map = new naver.maps.Map('map', mapOptions);
-
-        var marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(35.0987, 129.0403),
-            map: map,
-            title: '옥차방 부산점'
-        });
-    }
-
-    // 페이지 로드 시 지도 초기화
-    window.addEventListener('load', initMap);
-
-    const sliderTrack = document.querySelector('.slider-track');
-    const slides = document.querySelectorAll('.slide');
-    let currentSlide = 0;
-    const slideCount = slides.length - 1; // 복제된 마지막 제외
-
-    function moveSlide() {
-        currentSlide++;
-
-        // 이동 직전 - gap 20px 추가
-        sliderTrack.style.gap = '20px';
-        sliderTrack.style.transition = 'transform 0.8s ease, gap 0.8s ease';
-        sliderTrack.style.transform = `translateX(-${(100 * currentSlide)}vw)`;
-
-        // 이동 완료 후 - gap 다시 0px로 줄이기
-        setTimeout(() => {
-            sliderTrack.style.gap = '0px';
-
-            // 마지막 복제 슬라이드 도달 시
-            if (currentSlide === slideCount) {
-                setTimeout(() => {
-                    sliderTrack.style.transition = 'none';
-                    sliderTrack.style.transform = 'translateX(0)';
-                    currentSlide = 0;
-                }, 300); // 자연스럽게
-            }
-        }, 800); // transform 끝나고 gap 닫기
-    }
-
-    // 5초마다 이동
-    setInterval(moveSlide, 5000);
 });
