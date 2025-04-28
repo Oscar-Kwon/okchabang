@@ -76,9 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (hamburger && mobileNav) {
             hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
+                const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', !isExpanded);
+                hamburger.setAttribute('aria-label', isExpanded ? '메뉴 열기' : '메뉴 닫기');
                 mobileNav.classList.toggle('active');
-                document.body.classList.toggle('menu-active');
             });
 
             // 모바일 메뉴 링크 클릭 시
@@ -176,6 +177,58 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // 8. 주소 복사 버튼 접근성
+    function initCopyAddressButton() {
+        document.querySelectorAll('.copy-address-btn').forEach(button => {
+            button.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(button.dataset.address);
+                    button.setAttribute('aria-label', '주소가 복사되었습니다');
+                    setTimeout(() => {
+                        button.setAttribute('aria-label', button.dataset.originalLabel);
+                    }, 2000);
+                } catch (err) {
+                    button.setAttribute('aria-label', '주소 복사에 실패했습니다');
+                }
+            });
+        });
+    }
+
+    // FAQ 기능 초기화
+    function initFAQ() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            if (question && answer) {
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // 다른 모든 FAQ 항목 닫기
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            const otherAnswer = otherItem.querySelector('.faq-answer');
+                            if (otherAnswer) {
+                                otherAnswer.style.maxHeight = '0px';
+                            }
+                        }
+                    });
+                    
+                    // 현재 항목 토글
+                    item.classList.toggle('active');
+                    if (!isActive) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    } else {
+                        answer.style.maxHeight = '0px';
+                    }
+                });
+            }
+        });
+    }
+
     // 모든 기능 초기화
     function initializeAll() {
         handlePreloader();
@@ -185,8 +238,42 @@ document.addEventListener('DOMContentLoaded', function() {
         initMobileMenu();
         initScrollSpy();
         initMenuFilter();
+        initCopyAddressButton();
+        initFAQ();
     }
 
     // 실행
     initializeAll();
+
+    const scrollTrack = document.querySelector('.scroll-track');
+    
+    // 터치 디바이스 대응
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    scrollTrack.addEventListener('mousedown', (e) => {
+        isDown = true;
+        scrollTrack.style.animationPlayState = 'paused';
+        startX = e.pageX - scrollTrack.offsetLeft;
+        scrollLeft = scrollTrack.scrollLeft;
+    });
+
+    scrollTrack.addEventListener('mouseleave', () => {
+        isDown = false;
+        scrollTrack.style.animationPlayState = 'running';
+    });
+
+    scrollTrack.addEventListener('mouseup', () => {
+        isDown = false;
+        scrollTrack.style.animationPlayState = 'running';
+    });
+
+    scrollTrack.addEventListener('mousemove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - scrollTrack.offsetLeft;
+        const walk = (x - startX) * 2;
+        scrollTrack.scrollLeft = scrollLeft - walk;
+    });
 });

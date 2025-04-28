@@ -11,27 +11,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 🌿 기본 메타 정보 -->
-    <title>옥차방 | 행운의 구슬 아이스크림</title>
-    <meta name="description" content="옥차방은 복고와 현대적 감성을 담아, 구슬 아이스크림과 스페셜 음료를 제공하는 따뜻한 사랑방 같은 카페입니다.">
-    <meta name="keywords" content="옥차방, 구슬아이스크림, 복고카페, 행운, 레트로 모던, 카페, 디저트, 음료">
+    <title>부산 옥차방 | 행운을 만나는 복고 카페</title>
+    <meta name="description" content="부산 중구 롯데백화점에서 만나는 레트로 감성 카페 옥차방. 구슬 아이스크림과 시그니처 음료로 특별한 행운을 선사합니다.">
+    <meta name="keywords" content="부산카페,롯데백화점,옥차방,구슬아이스크림,레트로카페,복고카페">
     <meta name="author" content="옥차방 Okchabang">
 
     <!-- 🌐 Open Graph (SNS 공유) -->
-    <meta property="og:title" content="옥차방 | 행운을 담은 레트로 모던 카페">
-    <meta property="og:description" content="복고와 현대적 감성을 담아 행운을 전하는 옥차방에서 특별한 디저트와 음료를 경험하세요.">
-    <meta property="og:image" content="https://okchabang.com/image/og-img.png">
-    <meta property="og:image:type" content="image/png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="부산 옥차방 | 행운을 만나는 복고 카페">
+    <meta property="og:description" content="부산 중구 롯데백화점에서 만나는 레트로 감성 카페 옥차방. 구슬 아이스크림과 시그니처 음료로 특별한 행운을 선사합니다.">
+    <meta property="og:image" content="https://okchabang.com/images/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://okchabang.com">
-    <meta property="og:type" content="website">
     <meta property="og:site_name" content="옥차방 Okchabang">
 
     <!-- 🐤 Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="옥차방 | 레트로 구슬 아이스크림 브랜드">
-    <meta name="twitter:description" content="모든 세대가 함께 추억을 나누는 사랑방, 구슬아이스크림과 따뜻한 티가 있는 옥차방.">
-    <meta name="twitter:image" content="image/og-img.png">
+    <meta name="twitter:title" content="부산 옥차방 | 행운을 만나는 복고 카페">
+    <meta name="twitter:description" content="부산 중구 롯데백화점에서 만나는 레트로 감성 카페 옥차방">
+    <meta name="twitter:image" content="https://okchabang.com/images/og-image.jpg">
 
     <!-- 📱 모바일 앱, PWA 아이콘 대응 -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -823,6 +822,138 @@
                 max-width: 100%;
             }
         }
+
+        /* FAQ 섹션 */
+        .faq-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #FFFFFF;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 16px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-icon {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-answer p {
+            padding: 20px;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* 호버 효과 */
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 무한 스크롤 섹션 스타일 */
+        .infinite-scroll-section {
+            width: 100%;
+            overflow: hidden;
+            background: #000;
+            padding: 60px 0;
+            margin: 80px 0;
+            position: relative;
+        }
+
+        .scroll-container {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .scroll-track {
+            display: flex;
+            gap: 20px;
+            animation: scrollLeft 20s linear infinite;
+            /* 부드러운 스크롤을 위해 transform 사용 */
+            will-change: transform;
+        }
+
+        .scroll-track .menu-item {
+            flex: 0 0 300px; /* 각 아이템의 너비 고정 */
+            height: 400px;
+            position: relative;
+        }
+
+        .scroll-track .menu-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+        }
+
+        @keyframes scrollLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%); /* 전체 아이템 세트의 절반만큼 이동 */
+            }
+        }
+
+        /* 호버 시 애니메이션 일시 정지 */
+        .scroll-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            .scroll-track .menu-item {
+                flex: 0 0 200px;
+                height: 300px;
+            }
+            
+            .infinite-scroll-section {
+                padding: 40px 0;
+                margin: 60px 0;
+            }
+        }
     </style>
 </head>
 <body class="loading">
@@ -839,7 +970,7 @@
                 <li><a href="#" class="nav-link active" data-section="home">HOME</a></li>
                 <li><a href="#story-section" class="nav-link" data-section="story">ABOUT</a></li>
                 <li><a href="#featured-menu" class="nav-link" data-section="menu">MENU</a></li>
-                <li><a href="#explore" class="nav-link" data-section="explore">EXPLORE</a></li>
+                <li><a href="#explore" class="nav-link" data-section="explore">STORE</a></li>
                 <li><a href="#franchise" class="nav-link" data-section="franchise">CONTACT</a></li>
             </ul>
         </div>
@@ -858,7 +989,7 @@
                 <a href="#" class="nav-link" data-section="home">HOME</a>
                 <a href="#story-section" class="nav-link" data-section="story">ABOUT</a>
                 <a href="#featured-menu" class="nav-link" data-section="menu">MENU</a>
-                <a href="#explore" class="nav-link" data-section="explore">EXPLORE</a>
+                <a href="#explore" class="nav-link" data-section="explore">STORE</a>
                 <a href="#franchise" class="nav-link" data-section="franchise">CONTACT</a>
             </div>
 
@@ -871,7 +1002,7 @@
                 <a href="#" class="mobile-nav-link">HOME</a>
                 <a href="#story-section" class="mobile-nav-link">ABOUT</a>
                 <a href="#featured-menu" class="mobile-nav-link">MENU</a>
-                <a href="#explore" class="mobile-nav-link">EXPLORE</a>
+                <a href="#explore" class="mobile-nav-link">STORE</a>
                 <a href="#franchise" class="mobile-nav-link">CONTACT</a>
             </div>
         </nav>
@@ -898,7 +1029,8 @@
             <div class="story-container">
                 <div class="story-text">
                     <h2 class="story-title">THE OKCHABANG STORY</h2>
-                    <p class="story-subtitle">INSPIRING THE WORLD TO SEEK<br>PERFECTION IN ORIGINALITY.</p>
+                    <p class="story-description">사계절 내내, 모두의 일상에 행운을 더하는<br>구슬 아이스크림과 커피 - 옥차방</p>
+                    <p class="story-description-en">Loved Through Every Season –<br>Ice Cream and Coffee, by Okchabang</p>
                     <a href="#" class="learn-more-btn">브랜드 소개</a>
                 </div>
                 <div class="story-image">
@@ -1029,7 +1161,7 @@
         <section id="explore" class="explore-section">
             <div class="explore-container">
                 <div class="explore-text">
-                    <h2 class="section-title">EXPLORE</h2>
+                    <h2 class="section-title">OUR STORE</h2>
                     <p class="explore-description">
                         옥차방의 특별한 공간을 만나보세요. 부산 롯데백화점 중구점을 시작으로, 서울 신사동의 새로운 팝업 스토어까지, 각지에서 여러분을 기다리고 있습니다.
                     </p>
@@ -1070,11 +1202,11 @@
                     <!-- 왼쪽 폼 영역 -->
                     <div class="franchise-form">
                         <form class="signup-form">
-                            <input type="text" placeholder="이름" class="signup-input">
-                            <input type="tel" placeholder="연락처" class="signup-input">
+                            <input type="text" placeholder="신청자 성함" class="signup-input">
+                            <input type="tel" placeholder="전화번호 11자리 (-없이)" class="signup-input">
                             <input type="text" placeholder="창업희망지역" class="signup-input">
                             <textarea placeholder="문의내용" class="signup-input signup-textarea"></textarea>
-                            <button type="submit" class="signup-btn">제출하기</button>
+                            <button type="submit" class="signup-btn">상담 신청하기</button>
                         </form>
                     </div>
                     
@@ -1121,15 +1253,115 @@
                 </div>
 
                 <!-- 협업 및 제휴문의 폼 -->
-                <div class="contact-form" style="width: 100%; display: flex; justify-content: center;">
-                    <form class="signup-form" style="width: 100%; max-width: 400px; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-                        <input type="text" placeholder="작성자분 성함" class="signup-input" style="width: 100%;">
-                        <input type="email" placeholder="연락 이메일" class="signup-input" style="width: 100%;">
+                <div class="contact-form">
+                    <form class="signup-form">
+                        <input type="text" placeholder="담당자 성함" class="signup-input">
+                        <input type="email" placeholder="담당자 이메일" class="signup-input">
                         <button type="submit" class="signup-btn">제휴 문의하기</button>
                     </form>
                 </div>
             </div>
         </section>
+
+        <!-- FAQ 섹션 -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2 class="section-title">자주 묻는 질문</h2>
+                <div class="faq-container">
+                    <!-- FAQ 아이템 1 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            옥차방은 기존 브랜드들과 어떤 점에서 차별화되나요?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>옥차방은 흔한 저가 커피 브랜드나 단순 아이스크림 전문점과는 다릅니다. 구슬 아이스크림이라는 독보적인 키 아이템을 중심으로, 특색 있는 시그니처 커피 메뉴와 독창적인 디저트 라인업을 갖추어 고객에게 단순 소비가 아닌 '특별한 경험'을 제공합니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 아이템 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            구슬 아이스크림 매출에 대한 걱정은 없을까요?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>옥차방은 구슬 아이스크림만으로 매출을 기대하는 브랜드가 아닙니다. 사계절 내내 사랑받을 수 있는 구슬 아이스크림에, 커피와 디저트라는 안정적이고 지속 가능한 품목을 결합해 연중 꾸준한 매출 구조를 구축했습니다.</p>
+                            <p>또한 저희는 3년 이상 직접 구슬 아이스크림 관련 아이템을 운영해오며 이 제품이 단순 트렌드성 아이템이 아님을 몸소 증명해왔습니다. 탕후루나 요거트 관련 제품처럼 일시적인 유행에 기대는 제품이 아니라, 남녀노소 꾸준한 소비가 이어지는 아이템이라는 사실을 시장 반응과 실제 매출 데이터를 통해 직접 확인했습니다.</p>
+                            <p>✔ 구슬 아이스크림과 커피라는 두 축 위에, 브랜드 고유의 시그니처 메뉴까지 갖춘 옥차방은 연중 내내 흔들림 없는 매출을 기대할 수 있는 브랜드입니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 아이템 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            어떤 상권에 입점하는 것이 유리할까요?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>옥차방은 기존 아이스크림 전문점이나 저가커피 매장이 밀집된 상권에서도 충분히 경쟁력을 갖고 빠르게 시장을 선점할 수 있습니다. 이런 지역은 이미 소비 수요가 검증된 상권이기 때문에, 옥차방처럼 신선하고 차별화된 브랜드가 등장하면 기존에 지루함을 느끼던 고객들이 자연스럽게 유입될 수 있습니다. 포화된 상권은 기회입니다. 새로운 경험을 원하는 고객 니즈를 옥차방이 충족시킬 수 있습니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 아이템 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            테이크아웃만 가능한가요? 최소 매장 크기는 어떻게 되나요?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>우리는 최소 10평 이상(권장 10~15평) 규모의 매장을 운영할 것을 추천드리며, 이를 통해 테이크아웃은 물론, 매장 내 취식 매출까지 모두 극대화할 수 있도록 설계되어 있습니다. 최근 소비 트렌드는 단순히 포장하거나 배달받는 것을 넘어, 매장에서 머무르고, 경험하고, 시간을 보내는 가치를 중요시합니다. 옥차방은 테이크아웃, 매장 취식, 배달 매출까지 삼각 구조로 안정적인 수익 모델을 구축했습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 무한 스크롤 섹션 추가 -->
+        <div class="infinite-scroll-section">
+            <div class="scroll-container">
+                <div class="scroll-track">
+                    <!-- 첫번째 세트 -->
+                    <div class="menu-item">
+                        <img src="image/menu/coffee1.png" alt="Coffee 1">
+                    </div>
+                    <div class="menu-item">
+                        <img src="image/menu/coffee2.png" alt="Coffee 2">
+                    </div>
+                    <div class="menu-item">
+                        <img src="image/menu/tea1.png" alt="Tea 1">
+                    </div>
+                    <div class="menu-item">
+                        <img src="image/menu/tea2.png" alt="Tea 2">
+                    </div>
+                    <div class="menu-item">
+                        <img src="image/menu/ade1.png" alt="Ade 1">
+                    </div>
+                    <div class="menu-item">
+                        <img src="image/menu/ade2.png" alt="Ade 2">
+                    </div>
+                    <!-- 두번째 세트 (무한 스크롤을 위한 복제) -->
+                    <div class="menu-item">
+                        <img src="image/menu/coffee1.png" alt="Coffee 1">
+                    </div>
+                    <div class="menu-item">
+                        <img src="image/menu/coffee2.png" alt="Coffee 2">
+                    </div>
+                    <div class="menu-item">
+                        <img src="image/menu/tea1.png" alt="Tea 1">
+                    </div>
+                    <div class="menu-item">
+                        <img src="image/menu/tea2.png" alt="Tea 2">
+                    </div>
+                    <div class="menu-item">
+                        <img src="image/menu/ade1.png" alt="Ade 1">
+                    </div>
+                    <div class="menu-item">
+                        <img src="image/menu/ade2.png" alt="Ade 2">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
