@@ -1,19 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. 프리로더 관리
-    function handlePreloader() {
-        if (document.readyState === 'complete') {
+    const preloader = document.getElementById('preloader');
+    const progressElement = document.querySelector('.loading-progress');
+    let progress = 0;
+
+    // 로딩 진행률 업데이트 함수
+    function updateProgress() {
+        const increment = Math.random() * 10;
+        progress = Math.min(progress + increment, 100);
+        progressElement.textContent = Math.floor(progress) + '%';
+
+        if (progress < 100) {
+            setTimeout(updateProgress, 200);
+        } else {
+            // 로딩 완료 시 처리
             setTimeout(() => {
                 document.body.classList.remove('loading');
                 document.body.classList.add('loaded');
-            }, 1300); // 1.3초 대기
-        } else {
-            window.addEventListener('load', () => {
+                
+                // 프리로더 완전히 제거 (위로 슬라이드 애니메이션 완료 후)
                 setTimeout(() => {
-                    document.body.classList.remove('loading');
-                    document.body.classList.add('loaded');
-                }, 1300); // 1.3초 대기
-            });
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 500);
         }
+    }
+
+    // 페이지 로드 상태 확인 및 프리로더 시작
+    if (document.readyState === 'complete') {
+        updateProgress();
+    } else {
+        window.addEventListener('load', updateProgress);
     }
 
     // 2. AOS 초기화
@@ -153,26 +169,30 @@ document.addEventListener('DOMContentLoaded', function() {
         const categoryButtons = document.querySelectorAll('.category-btn');
         const menuItems = document.querySelectorAll('.menu-item');
 
-        function showCategory(category) {
-            // 버튼 active 상태 관리
-            categoryButtons.forEach(button => {
-                button.classList.toggle('active', button.dataset.category === category);
-            });
-
-            // 메뉴 아이템 active 상태 관리
-            menuItems.forEach(item => {
-                item.classList.toggle('active', item.dataset.category === category);
-            });
-        }
-
-        // 기본: IceCream 카테고리 보여주기
-        showCategory('icecream');
-
-        // 버튼 클릭 이벤트
         categoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const selectedCategory = button.getAttribute('data-category');
-                showCategory(selectedCategory);
+            button.addEventListener("click", () => {
+                // 1. 모든 버튼에서 active 제거
+                categoryButtons.forEach(btn => btn.classList.remove("active"));
+
+                // 2. 클릭된 버튼에만 active 추가
+                button.classList.add("active");
+
+                // 3. 모든 메뉴 숨기고 해당 카테고리만 표시
+                const category = button.dataset.category;
+                menuItems.forEach(item => {
+                    item.style.display = (item.dataset.category === category) ? "flex" : "none";
+                });
+            });
+        });
+
+        // 페이지 로드 시 기본 카테고리(예: icecream)만 표시
+        window.addEventListener("DOMContentLoaded", () => {
+            const defaultCategory = "icecream";
+            categoryButtons.forEach(btn => {
+                btn.classList.toggle("active", btn.dataset.category === defaultCategory);
+            });
+            menuItems.forEach(item => {
+                item.style.display = (item.dataset.category === defaultCategory) ? "flex" : "none";
             });
         });
     }
@@ -231,7 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 모든 기능 초기화
     function initializeAll() {
-        handlePreloader();
         initAOS();
         initNavigation();
         initHeroSlider();
@@ -275,5 +294,30 @@ document.addEventListener('DOMContentLoaded', function() {
         const x = e.pageX - scrollTrack.offsetLeft;
         const walk = (x - startX) * 2;
         scrollTrack.scrollLeft = scrollLeft - walk;
+    });
+
+    const categoryButtons = document.querySelector('.category-buttons');
+    
+    if (categoryButtons) {
+        categoryButtons.addEventListener('scroll', function() {
+            const isScrollable = this.scrollWidth > this.clientWidth;
+            const isScrolledToEnd = Math.abs(this.scrollWidth - this.clientWidth - this.scrollLeft) < 1;
+            
+            // 스크롤이 끝에 도달하면 그라데이션 제거
+            this.style.setProperty('--after-opacity', isScrolledToEnd ? '0' : '1');
+            
+            // 스크롤이 불가능하면 그라데이션 제거
+            if (!isScrollable) {
+                this.style.setProperty('--after-opacity', '0');
+            }
+        });
+        
+        // 초기 상태 체크
+        const isScrollable = categoryButtons.scrollWidth > categoryButtons.clientWidth;
+        categoryButtons.style.setProperty('--after-opacity', isScrollable ? '1' : '0');
+    }
+
+    document.querySelector('.brand-intro-btn').addEventListener('click', function() {
+        window.location.href = 'story.html';
     });
 });

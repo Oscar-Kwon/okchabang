@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>옥차방 스토리 - 함께 성장하는 브랜드</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* 히어로 섹션 스타일 */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 120px;
+            background-color: #fff;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            word-break: keep-all;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            word-break: keep-all;
+            line-height: 1.8;
+        }
+
+        /* 스토리 그리드 스타일 */
+        .story-section {
+            padding: 120px;
+            background-color: #f8f8f8;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background-color: #fff;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .story-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .story-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: white;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        .story-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .story-item:hover .story-content::before {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: flex-start;
+        }
+
+        .story-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            opacity: 1;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .story-desc {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.4s ease;
+            word-break: keep-all;
+            position: relative;
+            z-index: 2;
+            max-width: 90%;
+        }
+
+        .story-item:hover .story-desc {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .plus-icon {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 36px;
+            height: 36px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .plus-icon::before,
+        .plus-icon::after {
+            content: '';
+            position: absolute;
+            background: white;
+        }
+
+        .plus-icon::before {
+            width: 16px;
+            height: 2px;
+        }
+
+        .plus-icon::after {
+            width: 2px;
+            height: 16px;
+        }
+
+        .story-item:hover .plus-icon {
+            transform: rotate(45deg);
+        }
+
+        /* 섹션 타이틀 스타일 */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        @media (max-width: 1200px) {
+            .hero-section {
+                padding: 0 60px;
+            }
+
+            .story-section {
+                padding: 60px;
+            }
+
+            .story-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 0 24px;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .story-section {
+                padding: 24px;
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .story-title {
+                font-size: 1.5rem;
+            }
+
+            .story-desc {
+                font-size: 1rem;
+            }
+
+            .plus-icon {
+                width: 30px;
+                height: 30px;
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 히어로 섹션 -->
+    <section class="hero-section">
+        <h1 class="hero-title">옥차방은 함께<br>성장하는 브랜드입니다</h1>
+        <p class="hero-subtitle">지금 이 순간에도, 우리는 직접 매장을 운영하며 고객의 마음을 가장 가까이에서 만나고 있습니다.</p>
+    </section>
+
+    <!-- 스토리 섹션 -->
+    <section class="story-section">
+        <h2 class="section-title">Our Story</h2>
+        <div class="story-grid">
+            <div class="story-item">
+                <img src="/image/brand-drink1.png" alt="옥차방 스토리" class="story-image">
+                <div class="story-content">
+                    <div class="content-wrapper">
+                        <h2 class="story-title">함께 성장하는 브랜드</h2>
+                        <p class="story-desc">옥차방은 함께 성장하는 브랜드입니다. 우리는 단지 브랜드를 만들기 위해 이 길을 선택한 것이 아닙니다.</p>
+                    </div>
+                    <div class="plus-icon"></div>
+                </div>
+            </div>
+
+            <div class="story-item">
+                <img src="/image/brand-drink2.png" alt="옥차방 여정" class="story-image">
+                <div class="story-content">
+                    <div class="content-wrapper">
+                        <h2 class="story-title">현장에서의 경험</h2>
+                        <p class="story-desc">지금 이 순간에도 작은 매장을 직접 운영하며, 고객의 반응과 시장의 변화를 가장 가까이에서 마주하고 있습니다.</p>
+                    </div>
+                    <div class="plus-icon"></div>
+                </div>
+            </div>
+
+            <div class="story-item">
+                <img src="/image/brand-drink3.png" alt="옥차방 성장" class="story-image">
+                <div class="story-content">
+                    <div class="content-wrapper">
+                        <h2 class="story-title">30개의 매장 경험</h2>
+                        <p class="story-desc">옥차방은 30개가 넘는 팝업 스토어와 정규 매장을 직접 운영하며, 수많은 시행착오와 고민 끝에 탄생한 브랜드입니다.</p>
+                    </div>
+                    <div class="plus-icon"></div>
+                </div>
+            </div>
+
+            <div class="story-item">
+                <img src="/image/brand-drink4.png" alt="옥차방 신념" class="story-image">
+                <div class="story-content">
+                    <div class="content-wrapper">
+                        <h2 class="story-title">우리의 신념</h2>
+                        <p class="story-desc">우리가 성공할 가능성이 없었다면, 이 길을 계속 걸어오지 않았을 것입니다.</p>
+                    </div>
+                    <div class="plus-icon"></div>
+                </div>
+            </div>
+
+            <div class="story-item">
+                <img src="/image/brand-drink5.png" alt="옥차방 비전" class="story-image">
+                <div class="story-content">
+                    <div class="content-wrapper">
+                        <h2 class="story-title">글로벌 비전</h2>
+                        <p class="story-desc">옥차방은 한국을 넘어, 글로벌 무대에서도 통할 브랜드가 될 것입니다.</p>
+                    </div>
+                    <div class="plus-icon"></div>
+                </div>
+            </div>
+
+            <div class="story-item">
+                <img src="/image/brand-drink6.png" alt="옥차방 미래" class="story-image">
+                <div class="story-content">
+                    <div class="content-wrapper">
+                        <h2 class="story-title">함께하는 미래</h2>
+                        <p class="story-desc">지금, 옥차방과 함께 작은 시작이 큰 기회로 이어지는 여정을 시작해보세요.</p>
+                    </div>
+                    <div class="plus-icon"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 모바일 터치 이벤트
+        document.querySelectorAll('.story-item').forEach(item => {
+            item.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                const desc = this.querySelector('.story-desc');
+                const plusIcon = this.querySelector('.plus-icon');
+                
+                desc.style.opacity = '1';
+                desc.style.transform = 'translateY(0)';
+                plusIcon.style.transform = 'rotate(45deg)';
+                this.querySelector('.story-content::before').style.background = 'rgba(0, 0, 0, 0.7)';
+            });
+
+            item.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    const desc = this.querySelector('.story-desc');
+                    const plusIcon = this.querySelector('.plus-icon');
+                    
+                    desc.style.opacity = '0';
+                    desc.style.transform = 'translateY(-20px)';
+                    plusIcon.style.transform = 'rotate(0deg)';
+                    this.querySelector('.story-content::before').style.background = 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%)';
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
