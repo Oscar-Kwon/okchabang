@@ -316,8 +316,4 @@ document.addEventListener('DOMContentLoaded', function() {
         const isScrollable = categoryButtons.scrollWidth > categoryButtons.clientWidth;
         categoryButtons.style.setProperty('--after-opacity', isScrollable ? '1' : '0');
     }
-
-    document.querySelector('.brand-intro-btn').addEventListener('click', function() {
-        window.location.href = 'story.html';
-    });
 });

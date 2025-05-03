@@ -423,55 +423,62 @@ main, section, header, footer {
 
 /* 카테고리 버튼 그룹 */
 .category-buttons {
-    display: inline-flex; /* inline-flex로 변경 */
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 12px;
-    margin: 40px auto;
+    display: flex;
     flex-wrap: wrap;
-    width: auto; /* auto로 변경하여 내용물 크기만큼만 차지 */
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    margin: 0 auto 32px auto;
+    max-width: 1200px;
 }
 
+/* 버튼 기본 스타일 */
 .category-btn {
-    flex: 0 0 auto;
-    padding: 12px 24px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 100px;
+    min-width: 120px;
+    padding: 14px 0;
+    border-radius: 40px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: 2px solid rgba(255,255,255,0.3);
     background: transparent;
     color: #fff;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    align-items: center !important;
+    transition: background 0.2s, color 0.2s, border 0.2s;
 }
 
-/* 모바일 대응 */
+/* 활성화 버튼 */
+.category-btn.active {
+    background: #fff;
+    color: #222;
+    border-color: #fff;
+}
+
+/* 모바일: 두 줄(3+2)로 배치 */
 @media (max-width: 768px) {
     .category-buttons {
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 8px;
-        margin: 20px auto;
-        align-items: center m !important;
-        width: 100%; /* 모바일에서는 전체 너비 사용 */
+        gap: 10px 0;
     }
-
     .category-btn {
-        padding: 8px 16px;
-        font-size: 14px;
+        flex: 1 1 33%; /* 한 줄에 최대 3개 */
+        max-width: 90vw;
+        margin: 0 4px;
+    }
+    .category-btn:nth-child(n+4) {
+        margin-top: 8px; /* 4번째부터 두 번째 줄로 */
     }
 }
 
-/* 작은 모바일 화면 대응 */
-@media (max-width: 480px) {
-    .category-buttons-container {
-        padding: 0 10px;
+/* 태블릿/웹: 한 줄로만 */
+@media (min-width: 769px) {
+    .category-buttons {
+        flex-wrap: nowrap;
+        gap: 24px;
     }
-    
     .category-btn {
-        padding: 8px 14px;
-        font-size: 13px;
+        flex: 0 0 auto;
+        min-width: 120px;
+        margin: 0;
     }
 }
 
@@ -725,19 +732,19 @@ main, section, header, footer {
 
 .menu-item {
   display: flex;
-  flex-direction: column;      /* 세로 정렬 */
-  align-items: center;         /* 가운데 정렬 */
-  justify-content: flex-start; /* 위에서부터 쌓기 */
-  text-align: center;          /* 텍스트 가운데 */
-  height: 100%;                /* 카드 전체 높이 사용 */
-  background: #fff;            /* 카드 배경 (이미 적용되어 있다면 생략) */
-  border-radius: 24px;         /* 카드 둥글게 (이미 적용되어 있다면 생략) */
-  padding: 24px 0 16px 0;      /* 위아래 여백 (원하는 대로 조정) */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  background: #fff;
+  border-radius: 24px;
+  padding: 24px 0 16px 0;
   box-sizing: border-box;
 }
 
 .menu-item img {
-  width: 80%;                  /* 이미지 크기 조정 (원하는 대로) */
+  width: 80%;
   max-width: 160px;
   aspect-ratio: 1/1;
   object-fit: cover;
@@ -2374,6 +2381,139 @@ body.loaded #preloader {
   text-align: left !important;
   justify-content: flex-start !important;
   align-items: flex-start !important;
+}
+
+.menu-image-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px; /* 카드 높이 예시, 필요시 조정 */
+  background: #fff;
+  border-radius: 32px;
+  margin-bottom: 10px;
+}
+.menu-image-card img {
+  max-width: 140px;
+  max-height: 180px;
+  margin: auto;
+  display: block;
+}
+
+.story-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 16px 100px 16px;
+  text-align: center;
+}
+
+.story-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 36px;
+  letter-spacing: 0.02em;
+}
+
+.story-desc {
+  margin-bottom: 40px;
+  font-size: 1.18rem;
+  line-height: 1.7;
+  color: #fff;
+  max-width: 480px;
+}
+
+.story-desc-en {
+  margin-top: 18px;
+  font-size: 1.05rem;
+  color: #cfcfcf;
+  line-height: 1.6;
+}
+
+.brand-intro-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 2px solid #fff;
+  border-radius: 32px;
+  background: transparent;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+.brand-intro-btn:hover {
+  background: #fff;
+  color: #222;
+}
+
+.explore-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin: 0;
+}
+
+.explore-card {
+  background: #181818;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 1.5px 0 rgba(255,255,255,0.04) inset;
+  padding: 40px 30px 30px 36px;
+  min-width: 320px;
+  max-width: 740px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  transition: box-shadow 0.2s;
+}
+
+.explore-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.28), 0 1.5px 0 rgba(255,255,255,0.06) inset;
+}
+
+.explore-store {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #fff;
+}
+
+.explore-info {
+  font-size: 1.08rem;
+  color: #d0d0d0;
+  margin: 0;
+}
+
+.coming-soon {
+  color: #7de2d1;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.form-input, select.form-input {
+  width: 100%;
+  padding: 20px 28px;
+  border-radius: 40px;
+  border: none;
+  background: rgba(255,255,255,0.07);
+  color: #666;
+  font-size: 1.08rem;
+  margin-bottom: 18px;
+  outline: none;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 0 0 2px transparent;
+  appearance: none;
+}
+
+select.form-input:focus {
+  box-shadow: 0 0 0 2px #7de2d1;
+}
+
+select.form-input option {
+  color: #222;
+  background: #fff;
 }
 
 

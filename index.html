@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 🌿 기본 메타 정보 -->
-    <title>부산 옥차방 | 행운을 만나는 복고 카페</title>
+    <title>옥차방 | 행운을 전하는 구슬 아이스크림 & 카페</title>
     <meta name="description" content="부산 중구 롯데백화점에서 만나는 레트로 감성 카페 옥차방. 구슬 아이스크림과 시그니처 음료로 특별한 행운을 선사합니다.">
     <meta name="keywords" content="부산카페,롯데백화점,옥차방,구슬아이스크림,레트로카페,복고카페">
     <meta name="author" content="옥차방 Okchabang">
@@ -965,49 +965,184 @@
 
         .category-buttons {
             display: flex;
-            justify-content: flex-start;  /* 왼쪽 정렬로 변경 */
-            overflow-x: auto;  /* 가로 스크롤 활성화 */
-            overflow-y: hidden;  /* 세로 스크롤 비활성화 */
-            white-space: nowrap;  /* 텍스트 줄바꿈 방지 */
-            -webkit-overflow-scrolling: touch;  /* iOS 스크롤 부드럽게 */
-            scrollbar-width: none;  /* Firefox 스크롤바 숨기기 */
-            -ms-overflow-style: none;  /* IE/Edge 스크롤바 숨기기 */
-            padding: 10px 20px;  /* 좌우 패딩 추가 */
-            margin: 20px -20px;  /* 네거티브 마진으로 전체 너비 확보 */
-            gap: 8px;  /* 버튼 간격 조정 */
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            width: 100%;
+            margin: 0 auto 32px auto;
+            max-width: 900px;
         }
 
-        /* Chrome/Safari 스크롤바 숨기기 */
-        .category-buttons::-webkit-scrollbar {
-            display: none;
+        .category-row {
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            justify-content: center;
         }
 
         .category-btn {
-            flex: 0 0 auto;  /* 버튼 크기 고정 */
-            padding: 10px 20px;  /* 버튼 패딩 조정 */
-            font-size: 14px;
-            white-space: nowrap;  /* 텍스트 줄바꿈 방지 */
-            margin: 0;  /* 마진 제거 */
+            min-width: 120px;
+            padding: 14px 0;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: #fff;
+            transition: background 0.2s, color 0.2s, border 0.2s;
         }
 
-        /* 스크롤 가능함을 나타내는 그라데이션 효과 */
-        .category-buttons::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            width: 30px;
-            background: linear-gradient(to right, transparent, rgba(0,0,0,0.8));
-            pointer-events: none;  /* 그라데이션이 클릭을 방해하지 않도록 */
+        .category-btn.active {
+            background: #fff;
+            color: #222;
+            border-color: #fff;
         }
 
         /* 작은 모바일 화면에서의 추가 조정 */
-        @media (max-width: 480px) {
-            .category-btn {
-                padding: 8px 16px;  /* 더 작은 패딩 */
-                font-size: 13px;  /* 더 작은 폰트 */
+        @media (max-width: 768px) {
+            .category-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px 0;
             }
+            .category-btn {
+                flex: 1 1 33%; /* 한 줄에 최대 3개 */
+                max-width: 90vw;
+                margin: 0 8px;
+            }
+            .category-btn:nth-child(n+4) {
+                margin-top: 10px; /* 4번째부터 두 번째 줄로 */
+            }
+        }
+
+        /* 태블릿/웹: 한 줄로만 */
+        @media (min-width: 769px) {
+            .category-buttons {
+                flex-wrap: nowrap;
+                gap: 24px;
+            }
+            .category-btn {
+                flex: 0 0 auto;
+                min-width: 120px;
+                margin: 0;
+            }
+        }
+
+        .story-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 16px 100px 16px;
+            text-align: center;
+        }
+
+        .story-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 36px;
+            letter-spacing: 0.02em;
+        }
+
+        .story-desc {
+            margin-bottom: 40px;
+            font-size: 1.18rem;
+            line-height: 1.7;
+            color: #fff;
+            max-width: 480px;
+        }
+
+        .story-desc-en {
+            margin-top: 18px;
+            font-size: 1.05rem;
+            color: #cfcfcf;
+            line-height: 1.6;
+        }
+
+        .brand-intro-btn {
+            display: inline-block;
+            padding: 14px 40px;
+            border: 2px solid #fff;
+            border-radius: 32px;
+            background: transparent;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+        }
+        .brand-intro-btn:hover {
+            background: #fff;
+            color: #222;
+        }
+
+        .explore-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+            margin: 48px 0 0 0;
+        }
+
+        .explore-card {
+            background: #181818;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 1.5px 0 rgba(255,255,255,0.04) inset;
+            padding: 40px 36px 32px 36px;
+            min-width: 320px;
+            max-width: 420px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            transition: box-shadow 0.2s;
+        }
+
+        .explore-card:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.28), 0 1.5px 0 rgba(255,255,255,0.06) inset;
+        }
+
+        .explore-store {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: #fff;
+        }
+
+        .explore-info {
+            font-size: 1.08rem;
+            color: #d0d0d0;
+            margin: 0;
+        }
+
+        .coming-soon {
+            color: #7de2d1;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+
+        .form-input, select.form-input {
+            width: 100%;
+            padding: 20px 28px;
+            border-radius: 40px;
+            border: none;
+            background: rgba(255,255,255,0.07);
+            color: #fff;
+            font-size: 1.08rem;
+            margin-bottom: 18px;
+            outline: none;
+            transition: box-shadow 0.2s;
+            box-shadow: 0 0 0 2px transparent;
+            appearance: none;
+        }
+
+        select.form-input:focus {
+            box-shadow: 0 0 0 2px #7de2d1;
+        }
+
+        select.form-input option {
+            color: #222;
+            background: #fff;
         }
     </style>
 </head>
@@ -1088,9 +1223,15 @@
             <div class="story-container">
                 <div class="story-text">
                     <h2 class="story-title">THE OKCHABANG STORY</h2>
-                    <p class="story-description">사계절 내내, 모두의 일상에 행운을 더하는<br>구슬 아이스크림과 커피 - 옥차방</p>
-                    <p class="story-description-en">Loved Through Every Season –<br>Ice Cream and Coffee, by Okchabang</p>
-                    <a href="story.html" class="learn-more-btn">브랜드 소개</a>
+                    <div class="story-desc">
+                        <p>사계절 내내, 모두의 일상에 행운을 더하는<br>
+                        구슬 아이스크림과 커피 – 옥차방</p>
+                        <p class="story-desc-en">
+                            Loved Through Every Season –<br>
+                            Ice Cream and Coffee, by Okchabang
+                        </p>
+                    </div>
+                    <a href="story.html" class="brand-intro-btn">브랜드 소개</a>
                 </div>
                 <div class="story-image">
                     <div class="image-stack">
@@ -1106,14 +1247,11 @@
         <section class="featured-menu" id="featured-menu">
             <h2 class="section-title">OKCHABANG MENU</h2>
             
-            <div class="category-buttons-container">
-                <div class="category-buttons">
-                    <button class="category-btn active" data-category="icecream">IceCream</button>
-                    <button class="category-btn" data-category="coffee">Signature</button>
-                    <button class="category-btn" data-category="coffee">Coffee</button>
-                    <button class="category-btn" data-category="tea">Tea</button>
-                    <button class="category-btn" data-category="ade">Ade</button>
-                </div>
+            <div class="category-buttons">
+                <button class="category-btn" data-category="icecream">IceCream</button>
+                <button class="category-btn" data-category="signature">Signature</button>
+                <button class="category-btn" data-category="coffee">Coffee</button>
+                <button class="category-btn" data-category="tea">Tea & Ade</button>
             </div>
 
             <div class="menu-grid">
@@ -1144,11 +1282,6 @@
                     <p>Lemon Lime</p>
                 </div>
                 <div class="menu-item" data-category="icecream">
-                    <img src="menu/Lotuva-icecream.png" alt="로투바">
-                    <h3>로투바</h3>
-                    <p>Lotuva</p>
-                </div>
-                <div class="menu-item" data-category="icecream">
                     <img src="menu/Rainbow-icecream.png" alt="레인보우">
                     <h3>레인보우</h3>
                     <p>Rainbow</p>
@@ -1176,37 +1309,67 @@
                     <p>Vanilla Latte</p>
                 </div>
 
-                <!-- Tea & Ade 메뉴 -->
-                <div class="menu-item" data-category="tea">
+                <!-- Tea 메뉴 -->
+                <div class="menu-item" data-category="Tea/Ade">
                     <img src="menu/menu-milktea.png" alt="밀크티">
                     <h3>밀크티</h3>
                     <p>Milk Tea</p>
                 </div>
-                <div class="menu-item" data-category="ade">
+                <div class="menu-item" data-category="Tea/Ade">
+                    <img src="menu/menu-greentealatte.png" alt="그린티라떼">
+                    <h3>그린티라떼</h3>
+                    <p>Green Tea Latte</p>
+                </div>
+                <div class="menu-item" data-category="Tea/Ade">
+                    <img src="menu/menu-lemontea.png" alt="레몬티">
+                    <h3>레몬티</h3>
+                    <p>Lemon Tea</p>
+                </div>
+                <div class="menu-item" data-category="Tea/Ade">
+                    <img src="menu/menu-grapefruittea.png" alt="자몽티">
+                    <h3>자몽티</h3>
+                    <p>Grapefruit Tea</p>
+                </div>
+                <div class="menu-item" data-category="Tea/Ade">
+                    <img src="menu/menu-icedtea.png" alt="아이스티">
+                    <h3>아이스티</h3>
+                    <p>Iced Tea</p>
+                </div>
+
+                <!-- Ade 메뉴 -->
+                <div class="menu-item" data-category="Tea/Ade">
                     <img src="menu/menu-lemonade.png" alt="레모네이드">
                     <h3>레모네이드</h3>
                     <p>Lemonade</p>
                 </div>
+                <div class="menu-item" data-category="Tea/Ade">
+                    <img src="menu/menu-grapefruitade.png" alt="자몽에이드">
+                    <h3>자몽에이드</h3>
+                    <p>Grapefruit Ade</p>
+                </div>
+                <div class="menu-item" data-category="Tea/Ade">
+                    <img src="menu/menu-greengrapeade.png" alt="청포도에이드">
+                    <h3>청포도에이드</h3>
+                    <p>Green Grape Ade</p>
+                </div>
 
-                <!-- 시그니처 01 -->
+                <!-- 시그니처 메뉴 -->
                 <div class="menu-item" data-category="signature">
                     <div class="menu-image-card">
                         <img src="menu/signature01.png" alt="Signature 01">
                     </div>
                     <div class="menu-text">
-                        <h3 class="menu-name">시그니처 01</h3>
-                        <p class="menu-description">이곳에 시그니처 01의 설명이 들어갑니다.</p>
+                        <h3 class="menu-name">피스타치옥 크림라떼</h3>
+                        <p class="menu-description">Pistachiok Cream Latte</p>
                     </div>
                 </div>
-
-                <!-- 시그니처 02 -->
                 <div class="menu-item" data-category="signature">
                     <div class="menu-image-card">
                         <img src="menu/signature02.png" alt="Signature 02">
                     </div>
                     <div class="menu-text">
-                        <h3 class="menu-name">시그니처 02</h3>
-                        <p class="menu-description">이곳에 시그니처 02의 설명이 들어갑니다.</p>
+                        <h3 class="menu-name">옥차 크림라떼</h3>
+                        <p class="menu-description">Okcha Cream Latte</p>
                     </div>
                 </div>
             </div>
@@ -1222,22 +1385,22 @@
                 
                 <!-- 오른쪽 텍스트 영역 -->
                 <div class="explore-text">
-                    <h2 class="section-title">EXPLORE</h2>
+                    <h2 class="section-title">OUR STORE</h2>
                     <p class="explore-description">
                         옥차방의 특별한 공간을 만나보세요. 부산 롯데백화점 중구점을 시작으로, 서울 신사동의 새로운 팝업 스토어까지, 각지에서 여러분을 기다리고 있습니다.
                     </p>
-                    <div class="location-list">
-                        <div class="location-item">
-                            <h3>옥차방 부산점</h3>
-                            <p>부산 중구 롯데백화점 중구점 (Coming Soon)</p>
+                    <div class="explore-cards">
+                        <div class="explore-card">
+                            <h3 class="explore-store">옥차방 부산점</h3>
+                            <p class="explore-info">부산 중구 롯데백화점 중구점 <span class="coming-soon">(Coming Soon)</span></p>
                         </div>
-                        <div class="location-item">
-                            <h3>옥차방 신사점</h3>
-                            <p>서울 강남구 신사동 (Coming Soon)</p>
+                        <div class="explore-card">
+                            <h3 class="explore-store">옥차방 신사점</h3>
+                            <p class="explore-info">서울 강남구 신사동 <span class="coming-soon">(Coming Soon)</span></p>
                         </div>
-                        <div class="location-item">
-                            <h3>부산항 팝업</h3>
-                            <p>6월 3일 진행 예정</p>
+                        <div class="explore-card">
+                            <h3 class="explore-store">부산항 팝업</h3>
+                            <p class="explore-info">6월 3일 진행 예정</p>
                         </div>
                     </div>
                 </div>
@@ -1258,10 +1421,15 @@
                     <!-- 왼쪽 폼 영역 -->
                     <div class="franchise-form">
                         <form class="signup-form">
-                            <input type="text" placeholder="신청자 성함" class="signup-input">
-                            <input type="tel" placeholder="전화번호 11자리 (-없이)" class="signup-input">
-                            <input type="text" placeholder="창업희망지역" class="signup-input">
-                            <textarea placeholder="문의내용" class="signup-input signup-textarea"></textarea>
+                            <input type="text" class="form-input" placeholder="신청자 성함" required>
+                            <input type="tel" class="form-input" placeholder="전화번호 11자리 (-없이)" required>
+                            <select name="region" id="region" class="form-input" required>
+                                <option value="" disabled selected>창업희망지역</option>
+                                <option value="seoul">서울권</option>
+                                <option value="gyeonggi">경기도권</option>
+                                <option value="other">서울,경기도외지역</option>
+                            </select>
+                            <textarea class="form-input" placeholder="상세문의내용" required></textarea>
                             <button type="submit" class="signup-btn">상담 신청하기</button>
                         </form>
                     </div>
