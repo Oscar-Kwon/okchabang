@@ -375,7 +375,7 @@
 
         /* 햄버거 메뉴 스타일 */
         .hamburger-menu {
-            display: none;
+            display:none;
             position: fixed;
             top: 20px;
             left: 20px;
@@ -422,6 +422,7 @@
             .hamburger-menu {
                 top: 15px; /* 더 작은 화면에서는 위치 조정 */
                 left: 15px;
+                display: none;
             }
 
             .hero .hero-logo {
@@ -1129,7 +1130,7 @@
             background: rgba(255,255,255,0.07);
             color: #fff;
             font-size: 1.08rem;
-            margin-bottom: 18px;
+            margin-bottom: 10px;
             outline: none;
             transition: box-shadow 0.2s;
             box-shadow: 0 0 0 2px transparent;
@@ -1170,7 +1171,7 @@
     <div id="preloader">
         <div class="preloader-content">
             <img src="/assets/ocb-glyph-white.svg" alt="옥차방 로딩 심볼" />
-            <div class="loading-text">Loved Through Every Season – Ice Cream and Coffee, by Okchabang</div>
+            <div class="loading-text">Loved Through Every Season – Ice Cream and Coffee</div>
             <div class="loading-progress">0%</div>
         </div>
     </div>
@@ -1222,10 +1223,10 @@
         <section class="story-section" id="story-section">
             <div class="story-container">
                 <div class="story-text">
-                    <h2 class="story-title">THE OKCHABANG STORY</h2>
+                    <h2 class="story-title">OKCHABANG STORY</h2>
                     <div class="story-desc">
-                        <p>사계절 내내, 모두의 일상에 행운을 더하는<br>
-                        구슬 아이스크림과 커피 – 옥차방</p>
+                        <p>사계절 내내, 일상에 행운을 더하는<br>
+                        구슬 아이스크림과 커피를 맛볼 수 있는곳</p>
                         <p class="story-desc-en">
                             Loved Through Every Season –<br>
                             Ice Cream and Coffee, by Okchabang
@@ -1412,8 +1413,8 @@
             <div class="franchise-container">
                 <!-- 상단 텍스트 영역 -->
                 <div class="franchise-text">
-                    <h2 class="franchise-title">옥차방 창업에 관심 있으신가요?</h2>
-                    <p class="franchise-subtitle">레트로 감성 아이스크림 브랜드, 지금 바로 창업 문의하세요.</p>
+                    <h2 class="franchise-title">옥차방 창업 어렵지 않아요</h2>
+                    <p class="franchise-subtitle">빠르고 친절하게 창업 상담해 드리겠습니다. 지금 바로 문의주세요</p>
                 </div>
                 
                 <!-- 폼과 이미지 컨테이너 -->
@@ -1423,26 +1424,28 @@
                         <form class="signup-form">
                             <input type="text" class="form-input" placeholder="신청자 성함" required>
                             <input type="tel" class="form-input" placeholder="전화번호 11자리 (-없이)" required>
-                            <select name="region" id="region" class="form-input" required>
-                                <option value="" disabled selected>창업희망지역</option>
-                                <option value="서울특별시">서울특별시</option>
-                                <option value="부산광역시">부산광역시</option>
-                                <option value="대구광역시">대구광역시</option>
-                                <option value="인천광역시">인천광역시</option>
-                                <option value="광주광역시">광주광역시</option>
-                                <option value="대전광역시">대전광역시</option>
-                                <option value="울산광역시">울산광역시</option>
-                                <option value="세종특별자치시">세종특별자치시</option>
-                                <option value="경기도">경기도</option>
-                                <option value="강원도">강원도</option>
-                                <option value="충청북도">충청북도</option>
-                                <option value="충청남도">충청남도</option>
-                                <option value="전라북도">전라북도</option>
-                                <option value="전라남도">전라남도</option>
-                                <option value="경상북도">경상북도</option>
-                                <option value="경상남도">경상남도</option>
-                                <option value="제주특별자치도">제주특별자치도</option>
-                            </select>
+                            <div class="input-group">
+                                <select name="region" id="region" class="dropdown-input" required>
+                                    <option value="" disabled selected>창업희망지역</option>
+                                    <option value="서울특별시">서울특별시</option>
+                                    <option value="부산광역시">부산광역시</option>
+                                    <option value="대구광역시">대구광역시</option>
+                                    <option value="인천광역시">인천광역시</option>
+                                    <option value="광주광역시">광주광역시</option>
+                                    <option value="대전광역시">대전광역시</option>
+                                    <option value="울산광역시">울산광역시</option>
+                                    <option value="세종특별자치시">세종특별자치시</option>
+                                    <option value="경기도">경기도</option>
+                                    <option value="강원도">강원도</option>
+                                    <option value="충청북도">충청북도</option>
+                                    <option value="충청남도">충청남도</option>
+                                    <option value="전라북도">전라북도</option>
+                                    <option value="전라남도">전라남도</option>
+                                    <option value="경상북도">경상북도</option>
+                                    <option value="경상남도">경상남도</option>
+                                    <option value="제주특별자치도">제주특별자치도</option>
+                                </select>
+                            </div>
                             
                             <!-- 개인정보 동의 체크박스 추가 -->
                             <div class="privacy-consent">
@@ -1451,7 +1454,7 @@
                             </div>
                             
                             
-                            <button type="submit" class="signup-btn">상담 신청하기</button>
+                            <button type="submit" class="signup-btn">5분 상담 문의</button>
                         </form>
                     </div>
                     
@@ -1483,7 +1486,7 @@
 
         <!-- CONTACT US 섹션 -->
         <section class="contact-section">
-            <h2 class="section-title">제휴 문의하기</h2>
+            <h2 class="section-title">CONTACT US</h2>
             <div class="contact-content">
                 <!-- 이메일 정보 -->
                 <div class="email-info">
@@ -1499,7 +1502,7 @@
 
                 <!-- 협업 및 제휴문의 폼 -->
                 <div class="contact-form">
-                    <form class="contact-form" onsubmit="return showSubmitPopup(event)">
+                    <form class="signup-form">
                         <input type="text" placeholder="담당자 성함" class="signup-input">
                         <input type="email" placeholder="담당자 이메일" class="signup-input">
                         <button type="submit" class="signup-btn">제휴 문의하기</button>
@@ -1651,49 +1654,6 @@
                 }
             });
         });
-    </script>
-
-    <!-- 팝업 -->
-    <div id="submit-popup" style="
-      display:none; 
-      position:fixed; 
-      left:0; top:0; width:100vw; height:100vh; 
-      background:rgba(0,0,0,0.45); 
-      z-index:9999; 
-      align-items:center; 
-      justify-content:center;">
-      <div style="
-        background:#fff; 
-        color:#222; 
-        padding:36px 32px; 
-        border-radius:16px; 
-        font-size:1.2rem; 
-        box-shadow:0 4px 32px rgba(0,0,0,0.18); 
-        text-align:center;">
-          <strong>신청완료!</strong><br>
-          2일 내에 연락드리겠습니다.
-          <br><br>
-          <button onclick="closeSubmitPopup()" style="
-            margin-top:12px; 
-            padding:8px 24px; 
-            border:none; 
-            background:#222; 
-            color:#fff; 
-            border-radius:6px; 
-            font-size:1rem; 
-            cursor:pointer;">확인</button>
-        </div>
-    </div>
-
-    <script>
-    function showSubmitPopup(e) {
-      e.preventDefault();
-      document.getElementById('submit-popup').style.display = 'flex';
-      return false;
-    }
-    function closeSubmitPopup() {
-      document.getElementById('submit-popup').style.display = 'none';
-    }
     </script>
 </body>
 </html>

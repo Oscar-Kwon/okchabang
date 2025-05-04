@@ -247,32 +247,29 @@
         .story-hero-section {
             position: relative;
             width: 100vw;
-            min-height: 100vh;
-            height: 100svh;
+            height: 100vh;
+            min-height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #000000; /* 기본 배경색 */
             overflow: hidden;
         }
-        .story-hero-bg {
+        .story-hero-section .story-hero-bg {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            width: 100%;
-            height: 100%;
-            background: url('image/hero08.png') center center/cover no-repeat;
-            opacity: 100;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.5; /* 필요시 조정 */
             z-index: 1;
         }
-        .story-hero-content {
+        .story-hero-section .story-hero-content {
             position: relative;
             z-index: 2;
             color: #fff;
             text-align: center;
-            max-width: 90vw;
-            padding: 0 24px;
-            text-shadow: 0 2px 16px rgba(0,0,0,0.25);
+            padding: 40px 20px;
         }
-        .story-hero-content h1 {
+        .story-hero-section .story-hero-content h1 {
             font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 28px;
@@ -280,7 +277,7 @@
             text-align: left;
             letter-spacing: -1px;
         }
-        .story-hero-content p {
+        .story-hero-section .story-hero-content p {
             font-size: 1.3rem;
             font-weight: 400;
             line-height: 1.7;
@@ -292,10 +289,10 @@
                 min-height: 60vh;
                 height: 60vh;
             }
-            .story-hero-content h1 {
+            .story-hero-section .story-hero-content h1 {
                 font-size: 1.5rem;
             }
-            .story-hero-content p {
+            .story-hero-section .story-hero-content p {
                 font-size: 1rem;
             }
             
@@ -305,7 +302,8 @@
 <body>
     <!-- 히어로 섹션 -->
     <section class="story-hero-section">
-        <div class="story-hero-bg"></div>
+        <!-- 배경 이미지 (필요시) -->
+        <img class="story-hero-bg" src="image/hero07.png" alt="Hero Background">
         <div class="story-hero-content">
             <h1>
                 고객과 함께<br>
@@ -323,7 +321,7 @@
         <h2 class="section-title">Our Story</h2>
         <div class="story-grid">
             <div class="story-item">
-                <img src="/image/brand-drink1.png" alt="옥차방 스토리" class="story-image">
+                <img src="/image/hero03.png" alt="옥차방 스토리" class="story-image">
                 <div class="story-content">
                     <div class="content-wrapper">
                         <h2 class="story-title">함께 성장하는 브랜드</h2>
@@ -334,7 +332,7 @@
             </div>
 
             <div class="story-item">
-                <img src="/image/brand-drink2.png" alt="옥차방 여정" class="story-image">
+                <img src="/image/hero01.png" alt="옥차방 여정" class="story-image">
                 <div class="story-content">
                     <div class="content-wrapper">
                         <h2 class="story-title">현장에서의 경험</h2>
@@ -345,7 +343,7 @@
             </div>
 
             <div class="story-item">
-                <img src="/image/brand-drink3.png" alt="옥차방 성장" class="story-image">
+                <img src="/image/hero02.png" alt="옥차방 성장" class="story-image">
                 <div class="story-content">
                     <div class="content-wrapper">
                         <h2 class="story-title">30개의 매장 경험</h2>
@@ -356,7 +354,7 @@
             </div>
 
             <div class="story-item">
-                <img src="/image/brand-drink4.png" alt="옥차방 신념" class="story-image">
+                <img src="/image/hero06.png" alt="옥차방 신념" class="story-image">
                 <div class="story-content">
                     <div class="content-wrapper">
                         <h2 class="story-title">우리의 신념</h2>
@@ -367,7 +365,7 @@
             </div>
 
             <div class="story-item">
-                <img src="/image/brand-drink5.png" alt="옥차방 비전" class="story-image">
+                <img src="/image/hero07.png" alt="옥차방 비전" class="story-image">
                 <div class="story-content">
                     <div class="content-wrapper">
                         <h2 class="story-title">글로벌 비전</h2>
@@ -378,11 +376,22 @@
             </div>
 
             <div class="story-item">
-                <img src="/image/brand-drink6.png" alt="옥차방 미래" class="story-image">
+                <img src="/image/hero08.png" alt="옥차방 미래" class="story-image">
                 <div class="story-content">
                     <div class="content-wrapper">
                         <h2 class="story-title">함께하는 미래</h2>
                         <p class="story-desc">지금, 옥차방과 함께 작은 시작이 큰 기회로 이어지는 여정을 시작해보세요.</p>
+                    </div>
+                    <div class="plus-icon"></div>
+                </div>
+            </div>
+
+            <div class="story-item">
+                <img src="/image/hero09.png" alt="옥차방 새로운 미래" class="story-image">
+                <div class="story-content">
+                    <div class="content-wrapper">
+                        <h2 class="story-title">새로운 미래</h2>
+                        <p class="story-desc">더 큰 도약을 위해 옥차방은 계속 나아갑니다.</p>
                     </div>
                     <div class="plus-icon"></div>
                 </div>

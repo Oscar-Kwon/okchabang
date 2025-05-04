@@ -419,6 +419,9 @@ main, section, header, footer {
     overflow: visible;
     padding: 0 20px;
     text-align: center !important; /* 컨테이너 자체도 중앙 정렬 */
+    align-items: center !important;
+    justify-content: center !important;
+    justify-items: center !important;
 }
 
 /* 카테고리 버튼 그룹 */
@@ -430,6 +433,7 @@ main, section, header, footer {
     width: 100%;
     margin: 0 auto 32px auto;
     max-width: 1200px;
+    align-items: center !important;
 }
 
 /* 버튼 기본 스타일 */
@@ -1429,6 +1433,44 @@ body.menu-active .hamburger::after {
     border-color: #FFFFFF;
 }
 
+.privacy-consent{
+    margin-left: 16px;
+    color: #999999;
+    padding-left: 4px;
+}
+
+.dropdown-input {
+  width: 100%;
+  padding: 16px 40px 16px 20px; /* 오른쪽에 여유 */
+  border-radius: 24px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 1.1rem;
+  appearance: none; /* 기본 화살표 제거 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  outline: none;
+}
+
+/* 화살표 커스텀: 부모에 position:relative, after로 화살표 표시 */
+.input-group {
+  position: relative;
+  margin-bottom: 16px;
+}
+.dropdown-input:after,
+.input-group:after {
+  content: "▼";
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 1.1em;
+  pointer-events: none;
+}
+
 .copyright {
     text-align: center;
     color: #999999;
@@ -1834,6 +1876,7 @@ html {
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     margin-top: 0; /* 빈 공백 제거 */
+    margin-bottom: 120px;
 }
 
 .franchise-image {
@@ -2445,8 +2488,9 @@ body.loaded #preloader {
   text-decoration: none;
 }
 .brand-intro-btn:hover {
-  background: #fff;
+  background: #7de2d1;
   color: #222;
+  border: none;
 }
 
 .explore-cards {
