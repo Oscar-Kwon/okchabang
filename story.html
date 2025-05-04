@@ -50,14 +50,16 @@
         /* 스토리 그리드 스타일 */
         .story-section {
             padding: 120px;
-            background-color: #f8f8f8;
+            margin-top: 160px;
+            background-color: #ffffff;
         }
 
         .story-grid {
             display: grid;
+            margin-top: 160px;
             grid-template-columns: repeat(3, 1fr);
             gap: 2px;
-            background-color: #fff;
+            background-color: #ffffff;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -67,7 +69,7 @@
             overflow: hidden;
             aspect-ratio: 1;
             cursor: pointer;
-            background-color: #f8f8f8;
+            background-color: #ffffff;
             display: flex;
             flex-direction: column;
         }
@@ -241,13 +243,79 @@
                 right: 1.5rem;
             }
         }
+
+        .story-hero-section {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+            height: 100svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .story-hero-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/hero08.png') center center/cover no-repeat;
+            opacity: 100;
+            z-index: 1;
+        }
+        .story-hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            text-align: center;
+            max-width: 90vw;
+            padding: 0 24px;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.25);
+        }
+        .story-hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+            line-height: 1.2;
+            text-align: left;
+            letter-spacing: -1px;
+        }
+        .story-hero-content p {
+            font-size: 1.3rem;
+            font-weight: 400;
+            line-height: 1.7;
+            margin-bottom: 0;
+            text-align: left;
+        }
+        @media (max-width: 768px) {
+            .story-hero-section {
+                min-height: 60vh;
+                height: 60vh;
+            }
+            .story-hero-content h1 {
+                font-size: 1.5rem;
+            }
+            .story-hero-content p {
+                font-size: 1rem;
+            }
+            
+        }
     </style>
 </head>
 <body>
     <!-- 히어로 섹션 -->
-    <section class="hero-section">
-        <h1 class="hero-title">옥차방은 함께<br>성장하는 브랜드입니다</h1>
-        <p class="hero-subtitle">지금 이 순간에도, 우리는 직접 매장을 운영하며 고객의 마음을 가장 가까이에서 만나고 있습니다.</p>
+    <section class="story-hero-section">
+        <div class="story-hero-bg"></div>
+        <div class="story-hero-content">
+            <h1>
+                고객과 함께<br>
+                성장하는 브랜드, 옥차방
+            </h1>
+            <p>
+                지금 이 순간에도, 옥차방을 운영하며<br>
+                고객의 마음을 가장 가까이서 만나고 있습니다.
+            </p>
+        </div>
     </section>
 
     <!-- 스토리 섹션 -->
