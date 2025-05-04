@@ -132,6 +132,7 @@
     margin-bottom: 180px;
     position: relative; 
     z-index: 2;
+    background: none; /* 또는 background: #000; */
 }
 
 .featured-menu {
@@ -2560,6 +2561,377 @@ select.form-input:focus {
 select.form-input option {
   color: #222;
   background: #fff;
+}
+
+.story-collage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 220px 220px;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .collage-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  
+  .collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85) contrast(1.1);
+    transition: transform 0.4s;
+  }
+  
+  .collage-item:hover img {
+    transform: scale(1.05);
+  }
+  
+  .collage-title {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    z-index: 2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    width: 90%;
+    pointer-events: none;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s, visibility 0.4s;
+  }
+  
+  .collage-item:hover .collage-title,
+  .collage-item:focus .collage-title {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  
+  .collage-overlay {
+    /* 기존과 동일 */
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: 3;
+    transition: opacity 0.4s;
+    padding: 2.5rem;
+  }
+  
+  .collage-item:hover .collage-overlay,
+  .collage-item:focus .collage-overlay {
+    opacity: 1;
+  }
+  
+  .collage-item:hover .collage-text,
+  .collage-item:focus .collage-text {
+    opacity: 0.2;
+  }
+  
+  .overlay-content {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .story-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .story-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .plus-icon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    z-index: 3;
+    transition: transform 0.3s;
+    box-sizing: border-box;
+  }
+  .plus-icon::before,
+  .plus-icon::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: #fff;
+    border-radius: 1px;
+    transform: translate(-50%, -50%);
+  }
+  .plus-icon::before {
+    width: 18px;
+    height: 2.5px;
+  }
+  .plus-icon::after {
+    width: 2.5px;
+    height: 18px;
+  }
+  .collage-item:hover .plus-icon,
+  .collage-item:focus .plus-icon {
+    transform: rotate(45deg);
+  }
+  
+  .collage-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: none; /* 오버레이 제거 */
+    z-index: 1;
+  }
+  
+  .collage-item1 { grid-column: 1 / 2; grid-row: 1 / 2; }
+  .collage-item2 { grid-column: 2 / 3; grid-row: 1 / 3; }
+  .collage-item3 { grid-column: 1 / 2; grid-row: 2 / 3; }
+  .collage-item4 { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .collage-item5 { grid-column: 2 / 3; grid-row: 3 / 4; }
+  
+  @media (max-width: 700px) {
+    .story-collage-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, 180px);
+      padding-left: 20px;
+      padding-right: 20px;
+      box-sizing: border-box;
+    }
+    .collage-item1, .collage-item2, .collage-item3, .collage-item4, .collage-item5 {
+      grid-column: 1 / 2;
+      grid-row: auto;
+    }
+  }
+
+.story-hero-section {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.story-hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+    z-index: 1;
+}
+.story-hero-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-align: left;
+    padding: 48px 32px;
+    max-width: 700px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+.story-hero-content h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin-bottom: 32px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+.hero-narrative p {
+    font-size: 1.18rem;
+    font-weight: 400;
+    line-height: 2.1;
+    color: #f3f3f3;
+    margin: 0;
+}
+.hero-narrative b {
+    color: #fff;
+    font-weight: 700;
+}
+@media (max-width: 768px) {
+    .story-hero-section {
+        min-height: 60vh;
+        height: auto;
+        padding: 0;
+    }
+    .story-hero-content {
+        padding: 24px 10px;
+        max-width: 98vw;
+        border-radius: 0;
+    }
+    .story-hero-content h1 {
+        font-size: 1.4rem;
+        margin-bottom: 18px;
+    }
+    .hero-narrative p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}
+
+.story-hero-section.simple-black {
+  background: #000;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.story-hero-content {
+  color: #fff;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  text-align: left;
+}
+.story-hero-content h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+.brand-highlight {
+  color: #98E2CF;
+  font-weight: 800;
+}
+.story-hero-content p {
+  font-size: 1.08rem;
+  line-height: 2;
+  color: #eaeaea;
+  margin: 0;
+}
+.story-hero-content b {
+  color: #fff;
+  font-weight: 700;
+}
+@media (max-width: 700px) {
+  .story-hero-content {
+    padding: 24px 8px;
+    max-width: 98vw;
+  }
+  .story-hero-content h1 {
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+  }
+  .story-hero-content p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+}
+
+.story-hero-section.elegant {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 8vw;
+  padding-right: 8vw;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.story-hero-section.elegant::before {
+  /* 배경 이미지가 필요하다면 아래 주석 해제 후 이미지 경로 변경 */
+  /* content: ""; 
+  position: absolute;
+  inset: 0;
+  background: url('image/hero07.png') center/cover no-repeat;
+  filter: blur(2px) brightness(0.4);
+  z-index: 0; */
+}
+.story-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
+}
+.story-hero-inner h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+.brand-highlight {
+  color: #98E2CF;
+  font-weight: 800;
+}
+.story-hero-inner p {
+  font-size: 1.18rem;
+  line-height: 2.1;
+  color: #eaeaea;
+  margin: 0;
+  font-weight: 400;
+}
+.story-hero-inner .em {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+@media (max-width: 900px) {
+  .story-hero-section.elegant {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+  .story-hero-inner h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .story-hero-inner p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+@media (max-width: 600px) {
+  .story-hero-section.elegant {
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  .story-hero-inner {
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+  }
+  .story-hero-inner h1 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .story-hero-inner p {
+    font-size: 0.95rem;
+  }
 }
 
 
