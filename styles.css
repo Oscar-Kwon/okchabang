@@ -2496,25 +2496,18 @@ body.loaded #preloader {
 }
 
 .explore-cards {
+  max-width: 1200px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  align-items: center;
-  margin: 0;
+  gap: 32px;
+  align-items: stretch;
 }
 
-
 .explore-card {
-  background: #181818;
-  border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 1.5px 0 rgba(255,255,255,0.04) inset;
-  padding: 40px 30px 30px 36px;
-  min-width: 320px;
-  max-width: 740px;
   width: 100%;
-  text-align: left;
-  border: none;
-  transition: box-shadow 0.2s;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .explore-card:hover {
@@ -2616,7 +2609,7 @@ select.form-input option {
   .collage-item:focus .collage-title {
     opacity: 0 !important;
     visibility: hidden !important;
-    transition: opacity 0.4s, visibility 0.4s;
+    transition: opacity 0.4s, visibility 0.4s !important;
   }
   
   .collage-overlay {
@@ -2870,20 +2863,18 @@ select.form-input option {
   overflow: hidden;
 }
 .story-hero-section.elegant::before {
-  /* 배경 이미지가 필요하다면 아래 주석 해제 후 이미지 경로 변경 */
-  /* content: ""; 
-  position: absolute;
-  inset: 0;
-  background: url('image/hero07.png') center/cover no-repeat;
-  filter: blur(2px) brightness(0.4);
-  z-index: 0; */
+    background: none;
+    padding-left: 20px;
+    margin-left: 20px;
 }
 .story-hero-inner {
   position: relative;
+  padding-left: 20px;
   z-index: 1;
   max-width: 700px;
   margin-top: 8vh;
   margin-bottom: 8vh;
+  background: none;
 }
 .story-hero-inner h1 {
   font-size: 2.8rem;
@@ -2948,6 +2939,40 @@ select.form-input option {
 
 .collage-overlay .story-desc {
   text-align: left;
+}
+
+.brochure-section {
+  display: none !important;
+}
+
+.story-collage-grid .collage-item:hover .collage-title,
+.story-collage-grid .collage-item:focus .collage-title {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.4s, visibility 0.4s !important;
+}
+
+/* 데스크탑(기본)에서는 좌측 정렬 */
+.story-desc,
+.story-desc-en {
+  text-align: left;
+}
+
+/* 모바일(768px 이하)에서는 가운데 정렬 */
+@media (max-width: 768px) {
+  .story-desc,
+  .story-desc-en {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .explore-cards {
+    max-width: 100%;
+  }
+  .explore-card {
+    max-width: 100%;
+  }
 }
 
 
