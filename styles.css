@@ -3258,4 +3258,239 @@ select.form-input option {
   background-color: transparent !important;
 }
 
+.download-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 80px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 0 20px;
+}
+
+.download-card {
+  background: rgba(24, 24, 24, 0.92); /* 관리시스템과 동일한 투명도(예시) */
+  border-radius: 28px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 48px 36px 40px 36px;
+  color: #fff;
+  min-height: 320px;
+  transition: box-shadow 0.2s;
+}
+
+.download-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.28);
+}
+
+/* 버튼은 .cta-button 스타일만 사용 */
+.cta-button {
+  display: inline-block;
+  width: 100%;
+  background: #7de2d1;
+  color: #222;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 100px;
+  padding: 16px 0;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  transition: background 0.2s, color 0.2s;
+  margin-top: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  letter-spacing: -0.5px;
+}
+
+.cta-button:hover {
+  background: #fff;
+  color: #222;
+}
+
+@media (max-width: 900px) {
+  .download-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+    padding: 0 12px;
+  }
+  .download-card {
+    padding: 32px 18px 28px 18px;
+    min-height: 0;
+  }
+  .download-title {
+    font-size: 1.3rem;
+  }
+}
+
+.philosophy-download-section {
+  background-color: transparent;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 100px auto;
+  padding: 0 20px;
+}
+
+.philosophy-grid {
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  background: transparent;
+  border-radius: 40px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 64px 48px;
+  align-items: start;
+}
+
+.philosophy-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.philosophy-title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 32px;
+  letter-spacing: -1px;
+}
+
+.philosophy-en .philosophy-title {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.philosophy-desc {
+  font-size: 1.18rem;
+  color: #b8eae1;
+  margin-bottom: 40px;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.philosophy-en .philosophy-desc {
+  font-family: 'Quicksand', sans-serif;
+  color: #b8eae1;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #7de2d1;
+  color: #222;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 100px;
+  padding: 16px 0;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  transition: background 0.2s, color 0.2s;
+  margin-top: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  letter-spacing: -0.5px;
+}
+
+.cta-button:hover {
+  background: #fff;
+  color: #222;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 36px 12px;
+  }
+  .philosophy-title {
+    font-size: 1.5rem;
+  }
+  .philosophy-desc {
+    font-size: 1rem;
+  }
+}
+
+.brand-story-2col {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 100px auto;
+  padding: 0 20px;
+}
+
+.brand-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  background: rgba(24,24,24,0.92);
+  background-color: transparent;
+  border-radius: 40px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 64px 48px;
+  align-items: start;
+}
+
+.brand-story-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.brand-story-title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 32px;
+  letter-spacing: -1px;
+}
+
+.brand-story-en .brand-story-title {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.brand-story-desc {
+  font-size: 1.18rem;
+  color: #b8eae1;
+  margin-bottom: 0;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.brand-story-en .brand-story-desc {
+  font-family: 'Quicksand', sans-serif;
+  color: #b8eae1;
+}
+
+.brand-highlight {
+  color: #7de2d1;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .brand-story-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 36px 12px;
+  }
+  .brand-story-title {
+    font-size: 1.5rem;
+  }
+  .brand-story-desc {
+    font-size: 1rem;
+  }
+}
+
 
