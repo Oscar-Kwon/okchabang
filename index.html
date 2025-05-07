@@ -1712,21 +1712,17 @@
         <!-- ✨ 프랜차이즈 CTA 추가 -->
         <section id="franchise" class="franchise-cta">
             <div class="franchise-container">
-                <!-- 상단 텍스트 영역 -->
                 <div class="franchise-text">
                     <h2 class="franchise-title">옥차방 창업 어렵지 않아요</h2>
                     <p class="franchise-subtitle">빠르고 친절하게 창업 상담해 드리겠습니다.<br>지금 바로 문의주세요</p>
                 </div>
-                
-                <!-- 폼과 이미지 컨테이너 -->
                 <div class="franchise-form-container">
-                    <!-- 왼쪽 폼 영역 -->
                     <div class="franchise-form">
-                        <form class="signup-form">
-                            <input type="text" class="form-input" placeholder="신청자 성함" required>
-                            <input type="tel" class="form-input" placeholder="전화번호 11자리 (-없이)" required>
-                            <div class="input-group">
-                                <select name="region" id="region" class="dropdown-input" required>
+                        <form id="franchise-form" autocomplete="off">
+                            <input type="text" name="Name" class="franchise-input" placeholder="신청자 성함" required>
+                            <input type="tel" name="Phone" class="franchise-input" placeholder="전화번호 11자리 (-없이)" pattern="\d{11}" required>
+                            <div class="franchise-input-group">
+                                <select name="Region" id="region" class="franchise-select" required>
                                     <option value="" disabled selected>창업희망지역</option>
                                     <option value="서울특별시">서울특별시</option>
                                     <option value="부산광역시">부산광역시</option>
@@ -1747,19 +1743,13 @@
                                     <option value="제주특별자치도">제주특별자치도</option>
                                 </select>
                             </div>
-                            
-                            <!-- 개인정보 동의 체크박스 추가 -->
-                            <div class="privacy-consent">
-                                <input type="checkbox" id="privacy-check" required>
+                            <div class="franchise-privacy-consent">
+                                <input type="checkbox" id="privacy-check" name="Consent" required>
                                 <label for="privacy-check">개인정보 수집 및 이용에 동의합니다.</label>
                             </div>
-                            
-                            
-                            <button type="submit" class="signup-btn">5분 상담 문의</button>
+                            <button type="submit" class="franchise-submit-btn">5분 상담 문의</button>
                         </form>
                     </div>
-                    
-                    <!-- 오른쪽 이미지 영역 -->
                     <div class="franchise-image" style="background-image: url('image/contact-img.png'); background-size: cover; background-position: center; display: block;"></div>
                 </div>
             </div>
@@ -2065,27 +2055,29 @@
     </script>
 
     <script>
-    document.getElementById('franchise-form').addEventListener('submit', function(e) {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz1QmJrRqJ6mySvrhBvPFZ8NR0rYRJ_TP2KJZASjy0kE6lgmPo7LW7dBuzaMr_g5v8EoQ/exec';
+    const form = document.getElementById('franchise-form');
+
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        const data = {
-            name: this.name.value,
-            phone: this.phone.value,
-            region: this.region.value
-        };
+        // 버튼 비활성화 및 UX 메시지
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = '전송 중...';
 
-        fetch('https://script.google.com/macros/s/여기에_복사한_WEB_APP_URL/exec', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' }, // 중요!
-            body: JSON.stringify(data)
-        }).then(res => res.json()).then(result => {
-            if (result.result === 'success') {
-                alert('문의가 접수되었습니다!');
-                this.reset();
-            } else {
-                alert('제출 실패. 다시 시도해주세요.');
-            }
-        });
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then(response => {
+            alert("문의가 성공적으로 접수되었습니다.");
+            form.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = '5분 상담 문의';
+          })
+          .catch(error => {
+            alert("오류가 발생했습니다. 다시 시도해주세요.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = '5분 상담 문의';
+          });
     });
     </script>
 

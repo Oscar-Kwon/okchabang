@@ -125,22 +125,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (section === 'home') {
                     return window.scrollY < 100;
                 }
-                const element = document.querySelector(`#${section}-section`) || 
-                              document.querySelector(`#${section}`);
+                const element = document.querySelector(`#${section}`);
                 if (!element) return false;
-                
                 const rect = element.getBoundingClientRect();
                 return rect.top <= 100 && rect.bottom >= 100;
             });
 
             if (currentSection) {
-                // 데스크톱 메뉴 업데이트
                 navLinks.forEach(link => {
-                    link.classList.toggle('active', 
-                        link.getAttribute('data-section') === currentSection);
+                    const linkSection = link.getAttribute('data-section');
+                    link.classList.toggle('active', linkSection === currentSection);
                 });
                 
-                // 모바일 메뉴 업데이트
                 mobileNavLinks.forEach(link => {
                     link.classList.toggle('active', 
                         link.getAttribute('data-section') === currentSection);

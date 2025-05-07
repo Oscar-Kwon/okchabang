@@ -3493,4 +3493,160 @@ select.form-input option {
   }
 }
 
+/* 프랜차이즈 폼 전체 컨테이너 */
+.franchise-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#franchise-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* 인풋, 셀렉트 스타일 */
+.franchise-input,
+.franchise-select {
+  background: rgba(187, 187, 187, 0.15);
+  border: 1px solid rgba(136, 136, 136, 0.1);
+  border-radius: 30px;
+  padding: 12px 20px;
+  color: #fff;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.franchise-input:focus,
+.franchise-select:focus {
+  outline: none;
+  border-color: #98E2CF;
+  box-shadow: 0 0 0 2px rgba(152, 226, 207, 0.2);
+  transition: all 0.2s ease;
+}
+
+.franchise-input-group {
+  position: relative;
+  margin-bottom: 0;
+}
+
+/* 개인정보 동의 */
+.franchise-privacy-consent {
+  margin-left: 8px;
+  color: #999;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 제출 버튼 */
+.franchise-submit-btn {
+  display: inline-block;
+  padding: 14px 0;
+  border-radius: 30px;
+  background: transparent;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 2px solid #fff;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.franchise-submit-btn:hover,
+.franchise-submit-btn:focus {
+  background: #7de2d1;
+  color: #222;
+  border-color: #7de2d1;
+}
+
+/* 반응형 */
+@media (max-width: 700px) {
+  #franchise-form {
+    max-width: 100%;
+    gap: 16px;
+  }
+  .franchise-form {
+    padding: 0 8px;
+  }
+}
+
+/* 기본 스타일 */
+.franchise-select {
+  background: rgba(187, 187, 187, 0.15);
+  border: 1px solid rgba(136, 136, 136, 0.1);
+  border-radius: 30px;
+  padding: 12px 20px;
+  color: #fff;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+}
+
+/* placeholder 스타일 (첫 option) */
+.franchise-select option[value=""] {
+  color: #aaa !important;
+}
+
+/* 선택된 값이 없을 때(placeholder) 색상 적용 */
+.franchise-select:invalid {
+  color: #aaa;
+}
+
+/* 선택된 값이 있으면 흰색 */
+.franchise-select:not(:invalid) {
+  color: #fff;
+}
+
+/* 커스텀 화살표 */
+.franchise-input-group {
+  position: relative;
+}
+.franchise-select {
+  padding-right: 40px; /* 화살표 공간 */
+}
+.franchise-input-group::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #aaa; /* 화살표 색상 */
+  transform: translateY(-50%);
+}
+
+/* focus 시 화살표 색상 변경 */
+.franchise-select:focus + .franchise-input-group::after,
+.franchise-select:focus-visible + .franchise-input-group::after {
+  border-top-color: #98E2CF;
+}
+
+/* 모바일 대응 */
+@media (max-width: 700px) {
+  .franchise-select {
+    font-size: 15px;
+    padding: 12px 16px;
+  }
+  .franchise-input-group::after {
+    right: 16px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #aaa;
+  }
+}
+
 
