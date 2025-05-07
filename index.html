@@ -12,13 +12,13 @@
 
     <!-- 🌿 기본 메타 정보 -->
     <title>옥차방 | 행운을 전하는 구슬 아이스크림 & 카페</title>
-    <meta name="description" content="부산 중구 롯데백화점에서 만나는 레트로 감성 카페 옥차방. 구슬 아이스크림과 시그니처 음료로 특별한 행운을 선사합니다.">
+    <meta name="description" content="레트로 감성 구슬 아이스크림 브랜드 옥차방. 구슬 아이스크림과 시그니처 음료로 특별한 행운을 선사합니다.">
     <meta name="keywords" content="부산카페,롯데백화점,옥차방,구슬아이스크림,레트로카페,복고카페">
     <meta name="author" content="옥차방 Okchabang">
 
     <!-- 🌐 Open Graph (SNS 공유) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="부산 옥차방 | 행운을 만나는 복고 카페">
+    <meta property="og:title" content="옥차방 | 행운의 구슬 아이스크림 & 커피">
     <meta property="og:description" content="부산 중구 롯데백화점에서 만나는 레트로 감성 카페 옥차방. 구슬 아이스크림과 시그니처 음료로 특별한 행운을 선사합니다.">
     <meta property="og:image" content="https://okchabang.com/images/og-image.jpg">
     <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
 
     <!-- 🐤 Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="부산 옥차방 | 행운을 만나는 복고 카페">
+    <meta name="twitter:title" content="옥차방 | 행운의 구슬 아이스크림 & 커피">
     <meta name="twitter:description" content="부산 중구 롯데백화점에서 만나는 레트로 감성 카페 옥차방">
     <meta name="twitter:image" content="https://okchabang.com/images/og-image.jpg">
 
@@ -1339,7 +1339,7 @@
                 <button class="category-btn" data-category="icecream">IceCream</button>
                 <button class="category-btn" data-category="signature">Signature</button>
                 <button class="category-btn" data-category="coffee">Coffee</button>
-                <button class="category-btn" data-category="tea">Tea & Ade</button>
+                <button class="category-btn" data-category="Tea/Ade">Tea & Ade</button>
             </div>
 
             <div class="menu-grid">
@@ -1743,6 +1743,31 @@
                 }
             });
         });
+    </script>
+
+    <script>
+    document.getElementById('franchise-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const data = {
+            name: this.name.value,
+            phone: this.phone.value,
+            region: this.region.value
+        };
+
+        fetch('https://script.google.com/macros/s/여기에_복사한_WEB_APP_URL/exec', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }, // 중요!
+            body: JSON.stringify(data)
+        }).then(res => res.json()).then(result => {
+            if (result.result === 'success') {
+                alert('문의가 접수되었습니다!');
+                this.reset();
+            } else {
+                alert('제출 실패. 다시 시도해주세요.');
+            }
+        });
+    });
     </script>
 </body>
 </html>
