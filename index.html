@@ -1982,3 +1982,66 @@
         });
     });
     </script>
+
+    <!-- 페이지 하단(푸터 위 등)에 추가 -->
+    <button id="toTopBtn" aria-label="맨 위로 이동" style="display:none;">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="16" fill="#222" opacity="0.85"/>
+        <path d="M16 22V10M16 10L10 16M16 10L22 16" stroke="#7de2d1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <style>
+    #toTopBtn {
+      position: fixed;
+      right: 20px;
+      bottom: 95px; /* 스티키 창업문의 버튼과 겹치지 않게 */
+      z-index: 1200;
+      width: 56px;
+      height: 56px;
+      border: none;
+      border-radius: 50%;
+      background: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      cursor: pointer;
+      transition: opacity 0.3s, transform 0.2s;
+      opacity: 0.75;
+      padding: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #toTopBtn:hover {
+      opacity: 1;
+      transform: translateY(-4px) scale(1.08);
+    }
+    @media (max-width: 700px) {
+      #toTopBtn {
+        right: 16px;
+        bottom: 90px;
+        width: 44px;
+        height: 44px;
+      }
+      #toTopBtn svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+    </style>
+
+    <script>
+      // 스크롤 시 버튼 표시/숨김
+      window.addEventListener('scroll', function() {
+        const btn = document.getElementById('toTopBtn');
+        if (window.scrollY > 400) {
+          btn.style.display = 'flex';
+        } else {
+          btn.style.display = 'none';
+        }
+      });
+
+      // 클릭 시 맨 위로 부드럽게 이동
+      document.getElementById('toTopBtn').addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
