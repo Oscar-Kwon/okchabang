@@ -312,4 +312,43 @@ document.addEventListener('DOMContentLoaded', function() {
         const isScrollable = categoryButtons.scrollWidth > categoryButtons.clientWidth;
         categoryButtons.style.setProperty('--after-opacity', isScrollable ? '1' : '0');
     }
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw610uo65uPY2ejgrsttawOZVgvaOGWuYILwb8vY-9zU61PTChtzxP9EI4Y0JDgv4kiDw/exec';
+    const form = document.getElementById('franchise-form');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // 버튼 비활성화 및 UX 메시지
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = '전송 중...';
+
+        // fetch 요청 설정 개선
+        fetch(scriptURL, {
+            method: 'POST',
+            body: new FormData(form),
+            redirect: 'follow',  // 리디렉션 처리
+            mode: 'no-cors',     // CORS 정책 우회
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            alert("문의가 성공적으로 접수되었습니다.");
+            form.reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("오류가 발생했습니다. 다시 시도해주세요.");
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = '5분 상담 문의';
+        });
+    });
 });
