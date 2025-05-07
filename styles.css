@@ -2670,21 +2670,17 @@ select.form-input option {
     top: 30px;
     left: 30px;
     color: #fff;
-    font-size: 3.5rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
-    background: none;
-    pointer-events: none;
+    font-size: 2rem;      /* 원하는 크기로 통일 */
+    font-weight: 700;
     z-index: 3;
-    white-space: pre-line;
     transition: opacity 0.4s, visibility 0.4s;
   }
   
+  /* 호버 시 타이틀 숨김 제거 */
   .collage-item:hover .collage-title,
   .collage-item:focus .collage-title {
-    opacity: 0 !important;
-    visibility: hidden !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
   
   .collage-overlay {
@@ -2694,8 +2690,10 @@ select.form-input option {
     color: #fff;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     opacity: 0;
-    z-index: 4; /* 3보다 높게 */
+    z-index: 4;
     transition: opacity 0.4s;
     box-sizing: border-box;
   }
@@ -2715,9 +2713,8 @@ select.form-input option {
   }
   
   .collage-overlay .story-title {
-    display: none;
-    font-size: 2.5rem;
-    font-weight: 600;
+    font-size: 2rem;      /* .collage-title과 동일하게 */
+    font-weight: 700;
     margin-bottom: 1rem;
     color: #fff;
   }
