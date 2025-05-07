@@ -129,7 +129,7 @@
 /* 섹션 스타일링 */
 .story-section {
     margin-top: 60px !important;
-    padding: 260px 0;
+    padding: 220px 0;
     margin-bottom: 180px;
     position: relative; 
     z-index: 2;
@@ -2448,7 +2448,7 @@ html {
     font-size: 48px;
     font-weight: 600;
     background: linear-gradient(45deg, #98E2CF, #ffffff);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0;
     transform: translateY(20px);
