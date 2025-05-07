@@ -367,7 +367,6 @@
             position: relative;
             z-index: 2;
             padding-top: 120px;
-            padding: 10px;
             margin-top: 0;
             margin: 0px;
         }
@@ -825,6 +824,7 @@
 
         /* FAQ 섹션 */
         .faq-section {
+            margin-top: 120px;
             padding: 80px 0;
             text-align: center;
         }
@@ -967,7 +967,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 16px;
+            gap: 8px;
             width: 100%;
             margin: 0 auto 32px auto;
             max-width: 900px;
@@ -1003,7 +1003,7 @@
             .category-buttons {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 14px 0;
+                gap: 8px 0;
             }
             .category-btn {
                 flex: 1 1 33%; /* 한 줄에 최대 3개 */
@@ -1019,7 +1019,7 @@
         @media (min-width: 769px) {
             .category-buttons {
                 flex-wrap: nowrap;
-                gap: 24px;
+                gap: 8px;
             }
             .category-btn {
                 flex: 0 0 auto;
@@ -1091,7 +1091,7 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 1.5px 0 rgba(255,255,255,0.04) inset;
             padding: 40px 36px 32px 36px;
             min-width: 320px;
-            max-width: 420px;
+            max-width: auto;
             width: 100%;
             text-align: left;
             border: none;
@@ -1256,8 +1256,8 @@
                 <!-- 카드 1 -->
                 <div class="collage-item collage-item1">
                     <img src="/image/story03.png" alt="사계절 안정적 매출 구조">
-                    <div class="collage-title">사계절 안정적 매출 구조</div>
-                    <div class="plus-icon"></div>
+                    <span class="collage-title">사계절 안정적 매출 구조</span>
+                    <span class="plus-icon"></span>
                     <div class="collage-overlay">
                         <div class="overlay-content">
                             <h2 class="story-title">사계절 안정적 매출 구조</h2>
@@ -1271,8 +1271,8 @@
                 <!-- 카드 2 -->
                 <div class="collage-item collage-item2">
                     <img src="/image/story02.png" alt="커피와 디저트의 복합 매출 모델">
-                    <div class="collage-title">커피와 디저트의 복합 매출 모델</div>
-                    <div class="plus-icon"></div>
+                    <span class="collage-title">커피와 디저트 복합 모델</span>
+                    <span class="plus-icon"></span>
                     <div class="collage-overlay">
                         <div class="overlay-content">
                             <h2 class="story-title">커피와 디저트의 복합 매출 모델</h2>
@@ -1286,8 +1286,8 @@
                 <!-- 카드 3 -->
                 <div class="collage-item collage-item3">
                     <img src="/image/story01.png" alt="시그니처 메뉴 중심의 경험 설계">
-                    <div class="collage-title">재방문율을 높이는 시그니쳐 메뉴</div>
-                    <div class="plus-icon"></div>
+                    <span class="collage-title">재방문율 높은 시그니쳐 메뉴</span>
+                    <span class="plus-icon"></span>
                     <div class="collage-overlay">
                         <div class="overlay-content">
                             <h2 class="story-title">재방문율을 높이는 시그니처 메뉴</h2>
@@ -1301,8 +1301,8 @@
                 <!-- 카드 4 -->
                 <div class="collage-item collage-item4">
                     <img src="/image/hero07.png" alt="소자본 창업 & 빠른 회수 구조">
-                    <div class="collage-title">소자본 창업 & 빠른 회수</div>
-                    <div class="plus-icon"></div>
+                    <span class="collage-title">소자본 창업 & 빠른 회수</span>
+                    <span class="plus-icon"></span>
                     <div class="collage-overlay">
                         <div class="overlay-content">
                             <h2 class="story-title">소자본 창업 & 빠른 회수</h2>
@@ -1316,8 +1316,8 @@
                 <!-- 카드 5 -->
                 <div class="collage-item collage-item5">
                     <img src="/image/hero08.png" alt="검증된 브랜드와 특수상권 대응력">
-                    <div class="collage-title">검증된 브랜드와 특수상권 대응력</div>
-                    <div class="plus-icon"></div>
+                    <span class="collage-title">검증된 특수상권 대응력</span>
+                    <span class="plus-icon"></span>
                     <div class="collage-overlay">
                         <div class="overlay-content">
                             <h2 class="story-title">검증된 브랜드와 특수상권 대응력</h2>
@@ -1572,28 +1572,27 @@
 
         <!-- CONTACT US 섹션 -->
         <section class="contact-section">
-            <h2 class="section-title">CONTACT US</h2>
-            <div class="contact-content">
-                <!-- 이메일 정보 -->
-                <div class="email-info">
-                    <div class="location">
-                        <h4>Seoul</h4>
-                        <p>help@okchabang.com</p>
-                    </div>
-                    <div class="location">
-                        <h4>Busan</h4>
-                        <p>help@okchabang.com</p>
+            <div class="contact-container">
+                <!-- 좌측: 연락처 정보 -->
+                <div class="contact-info">
+                    <h2 class="contact-title">CONTACT US</h2>
+                    <div class="contact-locations">
+                        <div class="location">
+                            <div class="location-city">Seoul</div>
+                            <div class="location-email">info@okchabang.com</div>
+                        </div>
+                        <div class="location">
+                            <div class="location-city">Busan</div>
+                            <div class="location-email">hello.bs@okchabang.com</div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- 협업 및 제휴문의 폼 -->
-                <div class="contact-form">
-                    <form class="signup-form">
-                        <input type="text" placeholder="담당자 성함" class="signup-input">
-                        <input type="email" placeholder="담당자 이메일" class="signup-input">
-                        <button type="submit" class="signup-btn">제휴 문의하기</button>
-                    </form>
-                </div>
+                <!-- 우측: 폼 -->
+                <form class="contact-form">
+                    <input type="text" placeholder="작성자분 성함" required>
+                    <input type="email" placeholder="연락 이메일" required>
+                    <button type="submit">제휴 문의하기</button>
+                </form>
             </div>
         </section>
 
