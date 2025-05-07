@@ -129,7 +129,8 @@
 /* 섹션 스타일링 */
 .story-section {
     margin-top: 60px !important;
-    padding: 220px 0;
+    padding: 220px 20px !important;
+    padding-top: 120px;
     margin-bottom: 180px;
     position: relative; 
     z-index: 2;
@@ -174,7 +175,8 @@
     }
 
     .story-section {
-        padding: 0;
+        padding: 300px;
+        margin-top: 120px;
         margin-bottom: 100px;
     }
 
@@ -405,7 +407,8 @@ main, section, header, footer {
 /* 메뉴 제목 */
 .section-title {
     text-align: center;
-    margin-bottom: 40px;
+    margin-top: 60px;
+    margin-bottom: 20px;
     font-family: var(--font-quicksand);
     font-size: 32px;
     font-weight: 500;
@@ -503,6 +506,7 @@ main, section, header, footer {
     width: 100%;
     max-width: 400px;
     height: 500px;
+    margin-bottom: 120px;
     margin: 0 auto;
     overflow: visible;
 }
@@ -1580,7 +1584,7 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 100px 20px;
+    padding: 130px 20px;
     background: none;
     color: #FFFFFF;
     text-align: center;
@@ -2641,7 +2645,7 @@ select.form-input option {
     gap: 20px;
     max-width: 1200px;   /* 기존 900px → 1200px로 변경 */
     width: 100%;
-    margin: 0 auto;
+    margin: 20px auto;
     margin-top: 20px;
     position: relative;
 }
@@ -2670,9 +2674,9 @@ select.form-input option {
     top: 30px;
     left: 30px;
     color: #fff;
-    font-size: 2rem;      /* 원하는 크기로 통일 */
+    font-size: 2.8rem;      /* 원하는 크기로 통일 */
     font-weight: 700;
-    z-index: 3;
+    z-index: 3000;
     transition: opacity 0.4s, visibility 0.4s;
   }
   
@@ -2681,6 +2685,7 @@ select.form-input option {
   .collage-item:focus .collage-title {
     opacity: 1 !important;
     visibility: visible !important;
+    z-index: 1000;
   }
   
   .collage-overlay {
@@ -2713,10 +2718,11 @@ select.form-input option {
   }
   
   .collage-overlay .story-title {
-    font-size: 2rem;      /* .collage-title과 동일하게 */
+    font-size: 0rem;      /* .collage-title과 동일하게 */
     font-weight: 700;
     margin-bottom: 1rem;
     color: #fff;
+    z-index: 3000;
   }
   
   .collage-item:hover .collage-text,
@@ -2739,7 +2745,7 @@ select.form-input option {
     margin: 0;
     font-size: 1.1rem;
     line-height: 1.5;
-    max-width: 80%;
+    max-width: 100%;
   }
   
   .plus-icon {
@@ -2797,8 +2803,6 @@ select.form-input option {
     .story-collage-grid {
       grid-template-columns: 1fr;
       grid-template-rows: repeat(5, 280px); /* 180px → 320px로 수정 */
-      padding-left: 20px;
-      padding-right: 20px;
       box-sizing: border-box;
     }
     .collage-item1, .collage-item2, .collage-item3, .collage-item4, .collage-item5 {
@@ -3028,9 +3032,9 @@ select.form-input option {
 
 .story-collage-grid .collage-item:hover .collage-title,
 .story-collage-grid .collage-item:focus .collage-title {
-  opacity: 0 !important;
-  visibility: hidden !important;
+  opacity: 1 !important;
   transition: opacity 0.4s, visibility 0.4s !important;
+  z-index: 3000 !important;
 }
 
 /* 데스크탑(기본)에서는 좌측 정렬 */
@@ -3187,17 +3191,18 @@ select.form-input option {
 
 .collage-title {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.25);
   background: none;
   pointer-events: none;
+  z-index: 3000;
 }
 
 .plus-icon {
   position: absolute;
-  top: 20px;
+  top: 30px;
   right: 20px;
   width: 40px;
   height: 40px;
@@ -3514,7 +3519,7 @@ select.form-input option {
   background: rgba(187, 187, 187, 0.15);
   border: 1px solid rgba(136, 136, 136, 0.1);
   border-radius: 30px;
-  padding: 12px 20px;
+  padding: 16px 20px;
   color: #fff;
   font-size: 14px;
   width: 100%;
@@ -3582,7 +3587,7 @@ select.form-input option {
   background: rgba(187, 187, 187, 0.15);
   border: 1px solid rgba(136, 136, 136, 0.1);
   border-radius: 30px;
-  padding: 12px 20px;
+  padding: 16px 20px;
   color: #fff;
   font-size: 14px;
   width: 100%;
