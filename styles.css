@@ -3375,7 +3375,7 @@ select.form-input option {
 
 .philosophy-desc {
   font-size: 1.18rem;
-  color: #b8eae1;
+  color: #dddddd;
   margin-bottom: 40px;
   line-height: 1.7;
   font-weight: 500;
@@ -3383,7 +3383,7 @@ select.form-input option {
 
 .philosophy-en .philosophy-desc {
   font-family: 'Quicksand', sans-serif;
-  color: #b8eae1;
+  color: #dddddd;
 }
 
 .cta-button {
@@ -3468,15 +3468,15 @@ select.form-input option {
 
 .brand-story-desc {
   font-size: 1.18rem;
-  color: #b8eae1;
+  color: #dddddd;
   margin-bottom: 0;
   line-height: 1.7;
-  font-weight: 500;
+  font-weight: 300;
 }
 
 .brand-story-en .brand-story-desc {
   font-family: 'Quicksand', sans-serif;
-  color: #b8eae1;
+  color: #dddddd;
 }
 
 .brand-highlight {
