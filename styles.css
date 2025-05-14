@@ -1388,6 +1388,7 @@ body.menu-active .hamburger::after {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    color: #999999;
     text-align: center;
 }
 
