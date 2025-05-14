@@ -2423,7 +2423,7 @@ html {
 
 .preloader-content {
     display: flex;
-    flex-direction: column;
+        flex-direction: column;
     align-items: center;
     gap: 20px;
 }
@@ -2526,8 +2526,8 @@ body.loaded #preloader {
 }
 
 .story-hero {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 120px 16px 100px 16px;
@@ -2576,19 +2576,19 @@ body.loaded #preloader {
 }
 
 .explore-cards {
-  max-width: 100%;
-  width: 100%;
-  display: flex;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
   margin: auto !important;
-  flex-direction: column;
+    flex-direction: column;
   gap: 32px;
-  align-items: stretch;
+    align-items: stretch;
 }
 
 .explore-card {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 !important;
 }
 
 .explore-card:hover {
@@ -2615,7 +2615,7 @@ body.loaded #preloader {
 }
 
 .form-input, select.form-input {
-  width: 100%;
+    width: 100%;
   padding: 20px 28px;
   border-radius: 40px;
   border: none;
@@ -2642,7 +2642,7 @@ select.form-input option {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 220px 220px 220px;
-    gap: 20px;
+        gap: 20px;
     max-width: 1200px;   /* 기존 900px → 1200px로 변경 */
     width: 100%;
     margin: 20px auto;
@@ -2693,10 +2693,10 @@ select.form-input option {
     inset: 0;
     background: rgba(0,0,0,0.7);
     color: #fff;
-    display: flex;
+  display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+  align-items: flex-start;
     opacity: 0;
     z-index: 4;
     transition: opacity 0.4s;
@@ -2712,8 +2712,8 @@ select.form-input option {
     margin-top: 38px; /* .collage-title(top:30px) + 8px */
     margin-left: 30px;
     margin-right: 30px;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
     align-items: flex-start;
   }
   
@@ -2721,7 +2721,7 @@ select.form-input option {
     font-size: 0rem;      /* .collage-title과 동일하게 */
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #fff;
+  color: #fff;
     z-index: 3000;
   }
   
@@ -2754,12 +2754,12 @@ select.form-input option {
     right: 30px;
     width: 40px;
     height: 40px;
-    border: 2px solid #fff;
+  border: 2px solid #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
+  background: transparent;
     z-index: 3;
     transition: transform 0.3s;
   }
@@ -2769,7 +2769,7 @@ select.form-input option {
     position: absolute;
     left: 50%;
     top: 50%;
-    background: #fff;
+  background: #fff;
     border-radius: 1px;
     transform: translate(-50%, -50%);
   }
@@ -2813,7 +2813,7 @@ select.form-input option {
 
 .story-hero-section {
     background-color: transparent !important;
-    position: relative;
+  position: relative;
     width: 100vw;
     min-height: 100vh;
     background: #000;
@@ -2826,7 +2826,7 @@ select.form-input option {
     overflow: hidden;
 }
 .story-hero-bg {
-    position: absolute;
+  position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     object-fit: cover;
     opacity: 0.45;
@@ -2886,9 +2886,9 @@ select.form-input option {
   background: #000;
   width: 100vw;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   padding: 0;
 }
 .story-hero-content {
@@ -2902,7 +2902,7 @@ select.form-input option {
   font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 32px;
-  line-height: 1.2;
+    line-height: 1.2;
   letter-spacing: -1px;
 }
 .brand-highlight {
@@ -2939,8 +2939,8 @@ select.form-input option {
   width: 100vw;
   min-height: 100vh;
   background: none !important;
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
   justify-content: flex-start;
   padding-left: 8vw;
   padding-right: 8vw;
@@ -2953,7 +2953,7 @@ select.form-input option {
     margin-left: 20px;
 }
 .story-hero-inner {
-  position: relative;
+    position: relative;
   padding-left: 20px;
   z-index: 1;
   max-width: 700px;
@@ -3023,7 +3023,7 @@ select.form-input option {
 }
 
 .collage-overlay .story-desc {
-  text-align: left;
+    text-align: left;
 }
 
 .brochure-section {
@@ -3077,7 +3077,7 @@ select.form-input option {
 }
 
 .sticky-inquiry-inner {
-  width: 100%;
+    width: 100%;
   max-width: 900px;
   display: flex;
   justify-content: space-between;
@@ -3135,8 +3135,8 @@ select.form-input option {
 }
 
 .sticky-inquiry-link {
-  display: flex;
-  width: 100%;
+    display: flex;
+    width: 100%;
   max-width: 900px;
   justify-content: center;
   align-items: center;
@@ -3183,7 +3183,7 @@ select.form-input option {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  display: flex;
+    display: flex;
   align-items: center;
   gap: 12px;
   z-index: 3;
@@ -3264,7 +3264,7 @@ select.form-input option {
 }
 
 .download-section {
-  width: 100%;
+    width: 100%;
   max-width: 1200px;
   margin: 0 auto 80px auto;
   display: grid;
@@ -3300,7 +3300,7 @@ select.form-input option {
   font-weight: 700;
   border-radius: 100px;
   padding: 16px 0;
-  text-align: center;
+        text-align: center;
   text-decoration: none;
   border: none;
   outline: none;
@@ -3319,7 +3319,7 @@ select.form-input option {
   .download-section {
     grid-template-columns: 1fr;
     gap: 24px;
-    margin-bottom: 40px;
+        margin-bottom: 40px;
     padding: 0 12px;
   }
   .download-card {
@@ -3429,8 +3429,8 @@ select.form-input option {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto 100px auto;
-  padding: 0 20px;
-}
+    padding: 0 20px;
+  }
 
 .brand-story-grid {
   display: grid;
@@ -3446,7 +3446,7 @@ select.form-input option {
 
 .brand-story-col {
   display: flex;
-  flex-direction: column;
+    flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
 }
@@ -3494,8 +3494,8 @@ select.form-input option {
     font-size: 1.5rem;
   }
   .brand-story-desc {
-    font-size: 1rem;
-  }
+        font-size: 1rem;
+    }
 }
 
 /* 프랜차이즈 폼 전체 컨테이너 */
@@ -3516,12 +3516,12 @@ select.form-input option {
 /* 인풋, 셀렉트 스타일 */
 .franchise-input,
 .franchise-select {
-  background: rgba(187, 187, 187, 0.15);
-  border: 1px solid rgba(136, 136, 136, 0.1);
-  border-radius: 30px;
+    background: rgba(187, 187, 187, 0.15);
+    border: 1px solid rgba(136, 136, 136, 0.1);
+    border-radius: 30px;
   padding: 16px 20px;
   color: #fff;
-  font-size: 14px;
+    font-size: 14px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -3544,8 +3544,8 @@ select.form-input option {
   margin-left: 8px;
   color: #999;
   font-size: 13px;
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
   gap: 6px;
 }
 
@@ -3557,7 +3557,7 @@ select.form-input option {
   background: transparent;
   color: #fff;
   font-size: 1.1rem;
-  font-weight: 600;
+    font-weight: 600;
   border: 2px solid #fff;
   transition: background 0.2s, color 0.2s;
   cursor: pointer;
@@ -3589,13 +3589,13 @@ select.form-input option {
   border-radius: 30px;
   padding: 16px 20px;
   color: #fff;
-  font-size: 14px;
+        font-size: 14px;
   width: 100%;
   box-sizing: border-box;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  position: relative;
+    position: relative;
 }
 
 /* placeholder 스타일 (첫 option) */
